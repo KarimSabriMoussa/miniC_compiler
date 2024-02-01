@@ -418,69 +418,18 @@ public class Tokeniser extends CompilerPass {
 
         // recognising include directive
         if (c == '#') {
-            int state = 0;
-            while (state != -1 && scanner.hasNext()) {
-                c = scanner.peek();
-                switch (state) {
-                    case 0:
-                        if (c == 'i') {
-                            scanner.next();
-                            state++;
-                        } else {
-                            state = -1;
-                        }
-                        break;
-                    case 1:
-                        if (c == 'n') {
-                            scanner.next();
-                            state++;
-                        } else {
-                            state = -1;
-                        }
-                        break;
-                    case 2:
-                        if (c == 'c') {
-                            scanner.next();
-                            state++;
-                        } else {
-                            state = -1;
-                        }
-                        break;
-                    case 3:
-                        if (c == 'l') {
-                            scanner.next();
-                            state++;
-                        } else {
-                            state = -1;
-                        }
-                        break;
-                    case 4:
-                        if (c == 'u') {
-                            scanner.next();
-                            state++;
-                        } else {
-                            state = -1;
-                        }
-                        break;
-                    case 5:
-                        if (c == 'd') {
-                            scanner.next();
-                            state++;
-                        } else {
-                            state = -1;
-                        }
-                        break;
-                    case 6:
-                        if (c == 'e') {
-                            scanner.next();
-                            return new Token(Token.Category.INCLUDE, line, column);
-                        } else {
-                            state = -1;
-                        }
-                        break;
-                }
+            if ((scanner.hasNext() && scanner.next() == 'i') &&
+                    (scanner.hasNext() && scanner.next() == 'n') &&
+                    (scanner.hasNext() && scanner.next() == 'c') &&
+                    (scanner.hasNext() && scanner.next() == 'l') &&
+                    (scanner.hasNext() && scanner.next() == 'u') &&
+                    (scanner.hasNext() && scanner.next() == 'd') &&
+                    (scanner.hasNext() && scanner.next() == 'e')) {
+                return new Token(Token.Category.INCLUDE, line, column);
             }
 
+            error(c, line, column);
+            return new Token(Token.Category.INVALID, line, column);
         }
 
         // if we reach this point, it means we did not recognise a valid token
