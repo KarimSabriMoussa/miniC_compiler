@@ -195,10 +195,15 @@ public class Tokeniser extends CompilerPass {
                     scanner.next();
 
                     if (c == '\\') {
-                        c = scanner.peek();
-                        if (escapedChar.indexOf(c) > -1) {
-                            sb.append(c);
-                            scanner.next();
+                        if (scanner.hasNext()) {
+                            c = scanner.peek();
+                            if (escapedChar.indexOf(c) > -1) {
+                                sb.append(c);
+                                scanner.next();
+                            } else {
+                                error(c, line, column);
+                                return new Token(Token.Category.INVALID, line, column);
+                            }
                         } else {
                             error(c, line, column);
                             return new Token(Token.Category.INVALID, line, column);
