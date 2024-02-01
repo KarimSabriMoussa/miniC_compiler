@@ -40,39 +40,48 @@ public class Tokeniser extends CompilerPass {
 
         // skip single line comments to the end of the line
         if (c == '/') {
-            c = scanner.peek();
-            if (c == '/') {
-                scanner.next();
-                while (scanner.hasNext()) {
-                    c = scanner.next();
-                    if (c == '\n') {
-                        return nextToken();
+            if (scanner.hasNext()) {
+
+                c = scanner.peek();
+                if (c == '/') {
+                    scanner.next();
+                    while (scanner.hasNext()) {
+                        c = scanner.next();
+                        if (c == '\n') {
+                            return nextToken();
+                        }
                     }
+                } else {
+                    c = '/';
                 }
-            } else {
-                c = '/';
             }
         }
 
         // skip multi line comments to their end
         if (c == '/') {
-            c = scanner.peek();
-            if (c == '*') {
-                scanner.next();
-                while (scanner.hasNext()) {
-                    c = scanner.next();
-                    if (c == '*') {
-                        c = scanner.peek();
-                        if (c == '/') {
-                            scanner.next();
-                            return nextToken();
+            if (scanner.hasNext()) {
+
+                c = scanner.peek();
+                if (c == '*') {
+                    scanner.next();
+                    while (scanner.hasNext()) {
+                        c = scanner.next();
+                        if (c == '*' && scanner.hasNext()) {
+                            c = scanner.peek();
+                            if (c == '/') {
+                                scanner.next();
+                                return nextToken();
+                            }
                         }
                     }
-                }
 
-                error(c, line, column);
-                return new Token(Token.Category.INVALID, line, column);
+                    error(c, line, column);
+                    return new Token(Token.Category.INVALID, line, column);
+                } else {
+                    c = '/';
+                }
             }
+
         }
 
         /*
@@ -96,13 +105,20 @@ public class Tokeniser extends CompilerPass {
         if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_') {
             StringBuilder sb = new StringBuilder();
             sb.append(c);
-            c = scanner.peek();
 
-            while ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_' || (c >= '0' && c <= '9')) {
-                sb.append(c);
-                scanner.next();
+            if (scanner.hasNext()) {
+
                 c = scanner.peek();
 
+                while (((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_' || (c >= '0' && c <= '9'))
+                        && scanner.hasNext()) {
+                    sb.append(c);
+                    scanner.next();
+
+                    if (scanner.hasNext()) {
+                        c = scanner.peek();
+                    }
+                }
             }
 
             if (sb.toString().equals("if")) {
@@ -146,12 +162,18 @@ public class Tokeniser extends CompilerPass {
         if (c >= '0' && c <= '9') {
             StringBuilder sb = new StringBuilder();
             sb.append(c);
-            c = scanner.peek();
 
-            while (c >= '0' && c <= '9') {
-                sb.append(c);
-                scanner.next();
+            if (scanner.hasNext()) {
                 c = scanner.peek();
+
+                while (c >= '0' && c <= '9' && scanner.hasNext()) {
+                    sb.append(c);
+                    scanner.next();
+
+                    if (scanner.hasNext()) {
+                        c = scanner.peek();
+                    }
+                }
             }
 
             return new Token(Token.Category.INT_LITERAL, sb.toString(), line, column);
@@ -159,29 +181,38 @@ public class Tokeniser extends CompilerPass {
 
         // recognising string literals
         if (c == '"') {
-            c = scanner.peek();
             StringBuilder sb = new StringBuilder();
-            while (specialCharWithoutDoubleQuote.indexOf(c) > -1 || (c >= 'a' && c <= 'z')
-                    || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == ' ' || c == '\\') {
-                sb.append(c);
-                scanner.next();
 
-                if (c == '\\') {
-                    c = scanner.peek();
-                    if (escapedChar.indexOf(c) > -1) {
-                        sb.append(c);
-                        scanner.next();
-                    } else {
-                        error(c, line, column);
-                        return new Token(Token.Category.INVALID, line, column);
-                    }
-                }
+            if (scanner.hasNext()) {
 
                 c = scanner.peek();
 
-                if (c == '"') {
+                while ((specialCharWithoutDoubleQuote.indexOf(c) > -1 || (c >= 'a' && c <= 'z')
+                        || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == ' ' || c == '\\')
+                        && scanner.hasNext()) {
+
+                    sb.append(c);
                     scanner.next();
-                    return new Token(Token.Category.STRING_LITERAL, sb.toString(), line, column);
+
+                    if (c == '\\') {
+                        c = scanner.peek();
+                        if (escapedChar.indexOf(c) > -1) {
+                            sb.append(c);
+                            scanner.next();
+                        } else {
+                            error(c, line, column);
+                            return new Token(Token.Category.INVALID, line, column);
+                        }
+                    }
+
+                    if (scanner.hasNext()) {
+                        c = scanner.peek();
+                    }
+
+                    if (c == '"') {
+                        scanner.next();
+                        return new Token(Token.Category.STRING_LITERAL, sb.toString(), line, column);
+                    }
                 }
             }
 
@@ -191,28 +222,40 @@ public class Tokeniser extends CompilerPass {
 
         // recognising char literals
         if (c == '\'') {
-            c = scanner.peek();
             StringBuilder sb = new StringBuilder();
-            if (specialCharWithoutSingleQuote.indexOf(c) > -1 || (c >= 'a' && c <= 'z')
-                    || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == ' ' || c == '\\') {
-                sb.append(c);
-                scanner.next();
-
-                if (c == '\\') {
-                    c = scanner.peek();
-                    if (escapedChar.indexOf(c) > -1) {
-                        sb.append(c);
-                        scanner.next();
-                    } else {
-                        error(c, line, column);
-                        return new Token(Token.Category.INVALID, line, column);
-                    }
-                }
+            if (scanner.hasNext()) {
 
                 c = scanner.peek();
-                if (c == '\'') {
+
+                if (specialCharWithoutSingleQuote.indexOf(c) > -1 || (c >= 'a' && c <= 'z')
+                        || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == ' ' || c == '\\') {
+                    sb.append(c);
                     scanner.next();
-                    return new Token(Token.Category.CHAR_LITERAL, sb.toString(), line, column);
+
+                    if (c == '\\') {
+                        if (scanner.hasNext()) {
+                            c = scanner.peek();
+                            if (escapedChar.indexOf(c) > -1) {
+                                sb.append(c);
+                                scanner.next();
+                            } else {
+                                error(c, line, column);
+                                return new Token(Token.Category.INVALID, line, column);
+                            }
+                        } else {
+                            error(c, line, column);
+                            return new Token(Token.Category.INVALID, line, column);
+                        }
+                    }
+
+                    if (scanner.hasNext()) {
+                        c = scanner.peek();
+                        if (c == '\'') {
+                            scanner.next();
+                            return new Token(Token.Category.CHAR_LITERAL, sb.toString(), line, column);
+                        }
+                    }
+
                 }
             }
 
@@ -225,25 +268,27 @@ public class Tokeniser extends CompilerPass {
          * AND &&
          * OR ||
          */
-        if (c == '&')
-
-        {
-            c = scanner.peek();
-            if (c == '&') {
-                scanner.next();
-                return new Token(Token.Category.LOGAND, line, column);
-            } else {
-                c = '&';
+        if (c == '&') {
+            if (scanner.hasNext()) {
+                c = scanner.peek();
+                if (c == '&') {
+                    scanner.next();
+                    return new Token(Token.Category.LOGAND, line, column);
+                } else {
+                    c = '&';
+                }
             }
         }
 
         if (c == '|') {
-            c = scanner.peek();
-            if (c == '|') {
-                scanner.next();
-                return new Token(Token.Category.LOGOR, line, column);
-            } else {
-                c = '|';
+            if (scanner.hasNext()) {
+                c = scanner.peek();
+                if (c == '|') {
+                    scanner.next();
+                    return new Token(Token.Category.LOGOR, line, column);
+                } else {
+                    c = '|';
+                }
             }
         }
 
@@ -258,42 +303,50 @@ public class Tokeniser extends CompilerPass {
          */
 
         if (c == '=') {
-            c = scanner.peek();
-            if (c == '=') {
-                scanner.next();
-                return new Token(Token.Category.EQ, line, column);
-            } else {
-                c = '=';
+            if (scanner.hasNext()) {
+                c = scanner.peek();
+                if (c == '=') {
+                    scanner.next();
+                    return new Token(Token.Category.EQ, line, column);
+                } else {
+                    c = '=';
+                }
             }
         }
 
         if (c == '!') {
-            c = scanner.peek();
-            if (c == '=') {
-                scanner.next();
-                return new Token(Token.Category.NE, line, column);
-            } else {
-                c = '!';
+            if (scanner.hasNext()) {
+                c = scanner.peek();
+                if (c == '=') {
+                    scanner.next();
+                    return new Token(Token.Category.NE, line, column);
+                } else {
+                    c = '!';
+                }
             }
         }
 
         if (c == '<') {
-            c = scanner.peek();
-            if (c == '=') {
-                scanner.next();
-                return new Token(Token.Category.LE, line, column);
-            } else {
-                c = '<';
+            if (scanner.hasNext()) {
+                c = scanner.peek();
+                if (c == '=') {
+                    scanner.next();
+                    return new Token(Token.Category.LE, line, column);
+                } else {
+                    c = '<';
+                }
             }
         }
 
         if (c == '>') {
-            c = scanner.peek();
-            if (c == '=') {
-                scanner.next();
-                return new Token(Token.Category.GE, line, column);
-            } else {
-                c = '>';
+            if (scanner.hasNext()) {
+                c = scanner.peek();
+                if (c == '=') {
+                    scanner.next();
+                    return new Token(Token.Category.GE, line, column);
+                } else {
+                    c = '>';
+                }
             }
         }
 
@@ -366,7 +419,7 @@ public class Tokeniser extends CompilerPass {
         // recognising include directive
         if (c == '#') {
             int state = 0;
-            while (state != -1) {
+            while (state != -1 && scanner.hasNext()) {
                 c = scanner.peek();
                 switch (state) {
                     case 0:
