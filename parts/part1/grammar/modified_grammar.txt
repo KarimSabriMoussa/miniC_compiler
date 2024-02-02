@@ -1,0 +1,75 @@
+# #  comment
+# () grouping
+# [] optional
+# *  zero or more
+# +  one or more
+# |  alternative
+
+# This is a modified syntax which better represents the implementation of the parser
+# It removes left recursion and preforms left factorisation
+
+
+program    	::= (include)* (structdecl | vardecl | funheader)* EOF
+
+include   	::= "#include" STRING_LITERAL
+
+structdecl 	::= structtype "{" members "}" ";"    
+
+members	   	::= vardecl members | vardecl
+
+vardecl    	::= type IDENT ("[" INT_LITERAL "]")* ";" 
+
+funheader 	::= type IDENT "(" paramlist ")" funtail
+
+funtail 	::= block | ";"
+
+type       	::= ("int" | "char" | "void" | structtype) ("*")*
+
+structtype 	::= "struct" IDENT
+
+paramlist	::=  param paramprime | empty
+
+paramprime	::= "," param paramprime | empty
+
+param 		::= type IDENT ("[" INT_LITERAL "]")*
+
+stmt		::=   block
+				| "while" "(" exp ")" stmt              # while loop
+				| "if" "(" exp ")" stmt ["else" stmt]   # if then else
+				| "return" [exp] ";"                    # return
+				| exp ";"                               
+				| "continue" ";"                        # continue
+				| "break" ";"                           # break
+
+block      ::= "{" (vardecl)* (stmt)* "}"
+
+exp        ::= 	  "(" exp ")" expprime 
+				| (IDENT | INT_LITERAL) expprime  
+				| ("-" | "+") exp expprime 
+				| CHAR_LITERAL expprime 
+				| STRING_LITERAL expprime 
+				| valueat expprime 
+				| addressof expprime 
+				| funcall expprime 
+				| sizeof expprime 
+				| typecast expprime
+
+expprime   	::=	  "=" exp expprime
+				| (">" | "<" | ">=" | "<=" | "!=" | "==" | "+" | "-" | "/" | "*" | "%" | "||" | "&&") exp  expprime
+				| arrayaccess expprime 
+				| fieldaccess expprime 
+				| empty
+	
+
+funcall      ::= IDENT "(" arglist ")" # function call
+
+
+arglist      ::=  [ exp ("," exp)* ]
+
+arrayaccess  ::= "[" exp "]"                  # array access
+fieldaccess  ::= "." IDENT                    # structure field member access
+valueat      ::= "*" exp                          # Value at operator (pointer indirection)
+addressof    ::= "&" exp                          # Address-of operator
+sizeof       ::= "sizeof" "(" type ")"            # size of type
+typecast     ::= "(" type ")" exp                 # type casting
+
