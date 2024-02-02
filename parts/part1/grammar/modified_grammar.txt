@@ -73,3 +73,9 @@ addressof    ::= "&" exp                          # Address-of operator
 sizeof       ::= "sizeof" "(" type ")"            # size of type
 typecast     ::= "(" type ")" exp                 # type casting
 
+
+
+# first sets
+
+first(stmt) = { "{", "while", "if", "return", "continue", "break", first(exp)};
+first(exp) = { "(" , IDENT, INT_LITERAL, "-", "+", CHAR_LITERAL, STRING_LITERAL. "*", "&", "sizeof" };
