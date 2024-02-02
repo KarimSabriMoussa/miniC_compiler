@@ -19,6 +19,19 @@ public class Parser extends CompilerPass {
 
     private final Tokeniser tokeniser;
 
+    private Category[] first_stmt = { Category.LBRA, Category.WHILE, Category.IF, Category.RETURN,
+            Category.CONTINUE, Category.BREAK, Category.LPAR, Category.IDENTIFIER, Category.INT_LITERAL,
+            Category.MINUS, Category.PLUS, Category.CHAR_LITERAL, Category.STRING_LITERAL, Category.ASTERISK,
+            Category.AND, Category.SIZEOF };
+
+    private Category[] first_exp = { Category.LPAR, Category.IDENTIFIER, Category.INT_LITERAL,
+            Category.MINUS, Category.PLUS, Category.CHAR_LITERAL, Category.STRING_LITERAL, Category.ASTERISK,
+            Category.AND, Category.SIZEOF };
+
+    private Category[] first_binop = { Category.GT, Category.LT, Category.LE, Category.GE, Category.NE,
+            Category.EQ, Category.PLUS, Category.MINUS, Category.DIV, Category.ASTERISK, Category.REM,
+            Category.LOGOR, Category.LOGAND };
+
     public Parser(Tokeniser tokeniser) {
         this.tokeniser = tokeniser;
     }
@@ -279,9 +292,11 @@ public class Parser extends CompilerPass {
         } else if (accept(Category.BREAK)) {
             expect(Category.BREAK);
             expect(Category.SC);
-        } else {
+        } else if (accept(first_exp)) {
             parseExp();
             expect(Category.SC);
+        } else {
+            error();
         }
     }
 
@@ -334,7 +349,7 @@ public class Parser extends CompilerPass {
             parseVarDecl();
         }
 
-        while (!accept(Category.RBRA)) {
+        while (accept(first_stmt)) {
             parseStmt();
         }
 
@@ -373,12 +388,13 @@ public class Parser extends CompilerPass {
                 && acceptLookAhead(1, Category.STRUCT, Category.INT, Category.CHAR, Category.VOID)) {
             parseTypeCast();
             parseExpPrime();
-        }else{
+        } else {
             error();
-        }        
+        }
     }
 
     private void parseFunCall() {
+        
         expect(Category.IDENTIFIER);
         expect(Category.LPAR);
 
@@ -388,11 +404,13 @@ public class Parser extends CompilerPass {
     }
 
     private void parseValueAt() {
+        
         expect(Category.ASTERISK);
         parseExp();
     }
 
     private void parseTypeCast() {
+        
         expect(Category.LPAR);
         parseType();
         expect(Category.RPAR);
@@ -400,6 +418,7 @@ public class Parser extends CompilerPass {
     }
 
     private void parseSizeOf() {
+        
         expect(Category.SIZEOF);
         expect(Category.LPAR);
         parseType();
@@ -407,11 +426,13 @@ public class Parser extends CompilerPass {
     }
 
     private void parseAddressOf() {
+        
         expect(Category.AND);
         parseExp();
     }
 
     private void parseArgList() {
+        
         if (!accept(Category.RPAR)) {
             parseExp();
             while (!accept(Category.RPAR)) {
@@ -422,11 +443,11 @@ public class Parser extends CompilerPass {
     }
 
     private void parseExpPrime() {
+        
         if (accept(Category.ASSIGN)) {
             parseAssign();
             parseExpPrime();
-        } else if (accept(Category.GT, Category.LT, Category.LE, Category.GE, Category.NE, Category.EQ, Category.PLUS,
-                Category.MINUS, Category.DIV, Category.ASTERISK, Category.REM, Category.LOGOR, Category.LOGAND)) {
+        } else if (accept(first_binop)) {
             parseBinaryOp();
             parseExpPrime();
         } else if (accept(Category.LSBR)) {
@@ -439,25 +460,26 @@ public class Parser extends CompilerPass {
     }
 
     private void parseAssign() {
+        
         expect(Category.ASSIGN);
         parseExp();
     }
 
     private void parseBinaryOp() {
 
-        expect(Category.GT, Category.LT, Category.LE, Category.GE, Category.NE, Category.EQ, Category.PLUS,
-                Category.MINUS, Category.DIV, Category.ASTERISK, Category.REM, Category.LOGOR, Category.LOGAND);
-
+        expect(first_binop);
         parseExp();
     }
 
     private void parseArrayAccess() {
+        
         expect(Category.LSBR);
         parseExp();
         expect(Category.RSBR);
     }
 
     private void parseFieldAccess() {
+        
         expect(Category.DOT);
         expect(Category.IDENTIFIER);
     }
