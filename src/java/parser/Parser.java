@@ -431,11 +431,11 @@ public class Parser extends CompilerPass {
         parseExp();
     }
 
-    private void parseArgList() {
+    private void parseArgList() { //TODO: fix infinite loop
         
-        if (!accept(Category.RPAR)) {
+        if (accept(first_exp)) {
             parseExp();
-            while (!accept(Category.RPAR)) {
+            while (accept(Category.COMMA)) {
                 expect(Category.COMMA);
                 parseExp();
             }
