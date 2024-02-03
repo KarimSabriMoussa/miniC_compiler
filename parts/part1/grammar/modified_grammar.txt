@@ -79,3 +79,4 @@ typecast     ::= "(" type ")" exp                 # type casting
 
 first(stmt) = { "{", "while", "if", "return", "continue", "break", first(exp)};
 first(exp) = { "(" , IDENT, INT_LITERAL, "-", "+", CHAR_LITERAL, STRING_LITERAL. "*", "&", "sizeof" };
+first(binOp) = {">" , "<" , ">=" , "<=" , "!=" , "==" , "+" , "-" , "/" , "*" , "%" , "||" , "&&"};
