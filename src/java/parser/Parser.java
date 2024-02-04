@@ -363,8 +363,10 @@ public class Parser extends CompilerPass {
             expect(Category.INT_LITERAL, Category.CHAR_LITERAL, Category.STRING_LITERAL, Category.IDENTIFIER);
             parseExpPrime();
         } else if (accept(Category.LPAR)
-                && acceptLookAhead(1, Category.STRUCT, Category.INT, Category.CHAR, Category.VOID)) {
-            parseTypeCast();
+                && acceptLookAhead(1, first_exp)) {
+            expect(Category.LPAR);
+            parseExp();
+            expect(Category.RPAR);
             parseExpPrime();
         } else if (accept(Category.PLUS, Category.MINUS)) {
             expect(Category.PLUS, Category.MINUS);
@@ -382,10 +384,9 @@ public class Parser extends CompilerPass {
         } else if (accept(Category.SIZEOF)) {
             parseSizeOf();
             parseExpPrime();
-        } else if (accept(Category.LPAR)) {
-            expect(Category.LPAR);
-            parseExp();
-            expect(Category.RPAR);
+        } else if (accept(Category.LPAR)
+                && acceptLookAhead(1, Category.STRUCT, Category.INT, Category.CHAR, Category.VOID)) {
+            parseTypeCast();
             parseExpPrime();
         } else {
             error();
