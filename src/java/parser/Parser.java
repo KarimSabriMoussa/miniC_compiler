@@ -183,7 +183,7 @@ public class Parser extends CompilerPass {
 
         parseVarDecl();
 
-        if (accept(Category.INT, Category.CHAR, Category.VOID)) {
+        if (accept(Category.STRUCT, Category.INT, Category.CHAR, Category.VOID)) {
             parseMembers();
         }
     }
@@ -394,7 +394,7 @@ public class Parser extends CompilerPass {
     }
 
     private void parseFunCall() {
-        
+
         expect(Category.IDENTIFIER);
         expect(Category.LPAR);
 
@@ -404,13 +404,13 @@ public class Parser extends CompilerPass {
     }
 
     private void parseValueAt() {
-        
+
         expect(Category.ASTERISK);
         parseExp();
     }
 
     private void parseTypeCast() {
-        
+
         expect(Category.LPAR);
         parseType();
         expect(Category.RPAR);
@@ -418,7 +418,7 @@ public class Parser extends CompilerPass {
     }
 
     private void parseSizeOf() {
-        
+
         expect(Category.SIZEOF);
         expect(Category.LPAR);
         parseType();
@@ -426,13 +426,13 @@ public class Parser extends CompilerPass {
     }
 
     private void parseAddressOf() {
-        
+
         expect(Category.AND);
         parseExp();
     }
 
-    private void parseArgList() { //TODO: fix infinite loop
-        
+    private void parseArgList() {
+
         if (accept(first_exp)) {
             parseExp();
             while (accept(Category.COMMA)) {
@@ -443,7 +443,7 @@ public class Parser extends CompilerPass {
     }
 
     private void parseExpPrime() {
-        
+
         if (accept(Category.ASSIGN)) {
             parseAssign();
             parseExpPrime();
@@ -460,7 +460,7 @@ public class Parser extends CompilerPass {
     }
 
     private void parseAssign() {
-        
+
         expect(Category.ASSIGN);
         parseExp();
     }
@@ -472,14 +472,14 @@ public class Parser extends CompilerPass {
     }
 
     private void parseArrayAccess() {
-        
+
         expect(Category.LSBR);
         parseExp();
         expect(Category.RSBR);
     }
 
     private void parseFieldAccess() {
-        
+
         expect(Category.DOT);
         expect(Category.IDENTIFIER);
     }
