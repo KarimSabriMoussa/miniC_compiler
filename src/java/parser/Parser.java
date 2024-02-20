@@ -145,6 +145,7 @@ public class Parser extends CompilerPass {
     }
 
     private Program parseProgram() {
+
         parseIncludes();
 
         List<Decl> decls = new ArrayList<>();
@@ -154,13 +155,14 @@ public class Parser extends CompilerPass {
                     acceptLookAhead(1, Category.IDENTIFIER) &&
                     acceptLookAhead(2, Category.LBRA)) {
                 parseStructDecl();
-            } else if ((acceptLookAhead(1, Category.IDENTIFIER) && acceptLookAhead(2, Category.LPAR))
-                    || (acceptLookAhead(1, Category.IDENTIFIER) && acceptLookAhead(2, Category.IDENTIFIER)
+            } else if ((accept(Category.INT, Category.CHAR, Category.VOID) && acceptLookAhead(1, Category.IDENTIFIER)
+                    && acceptLookAhead(2, Category.LPAR))
+                    || (accept(Category.STRUCT) && acceptLookAhead(1, Category.IDENTIFIER)
+                            && acceptLookAhead(2, Category.IDENTIFIER)
                             && acceptLookAhead(3, Category.LPAR))) {
                 parseFunHeader();
             } else {
                 parseVarDecl();
-
             }
         }
 
@@ -178,8 +180,8 @@ public class Parser extends CompilerPass {
         }
     }
 
-    private void parseStructDecl(){
-        
+    private void parseStructDecl() {
+
         expect(Category.STRUCT);
         expect(Category.IDENTIFIER);
         expect(Category.LBRA);
@@ -345,7 +347,7 @@ public class Parser extends CompilerPass {
 
         expect(Category.RETURN);
 
-        if (!accept(Category.SC)) {
+        if (accept(first_exp)) {
             parseExp();
         }
 
@@ -369,24 +371,22 @@ public class Parser extends CompilerPass {
 
     private void parseExp() {
 
-        if (accept(Category.INT_LITERAL, Category.CHAR_LITERAL, Category.STRING_LITERAL)
-                || (accept(Category.IDENTIFIER) && !acceptLookAhead(1, Category.LPAR))) {
-            expect(Category.INT_LITERAL, Category.CHAR_LITERAL, Category.STRING_LITERAL, Category.IDENTIFIER);
-            parseExpPrime();
-        } else if (accept(Category.LPAR)
-                && acceptLookAhead(1, first_exp)) {
+        if (accept(Category.LPAR) && acceptLookAhead(1, first_exp)) {
             expect(Category.LPAR);
             parseExp();
             expect(Category.RPAR);
             parseExpPrime();
-        } else if (accept(Category.PLUS, Category.MINUS)) {
-            expect(Category.PLUS, Category.MINUS);
-            parseExp();
-            parseExpPrime();
         } else if (accept(Category.IDENTIFIER) && acceptLookAhead(1, Category.LPAR)) {
             parseFunCall();
             parseExpPrime();
-        } else if (accept(Category.ASTERISK)) {
+        } else if (accept(Category.INT_LITERAL, Category.CHAR_LITERAL, Category.STRING_LITERAL, Category.IDENTIFIER)) {
+            expect(Category.INT_LITERAL, Category.CHAR_LITERAL, Category.STRING_LITERAL, Category.IDENTIFIER);
+            parseExpPrime();
+        }else if (accept(Category.PLUS, Category.MINUS)) {
+            expect(Category.PLUS, Category.MINUS);
+            parseExp();
+            parseExpPrime();
+        }else if (accept(Category.ASTERISK)) {
             parseValueAt();
             parseExpPrime();
         } else if (accept(Category.AND)) {
