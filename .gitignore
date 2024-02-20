@@ -5,3 +5,4 @@ out/
 project/
 .vscode/
 out.log
+fail_log.txt
