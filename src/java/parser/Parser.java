@@ -143,13 +143,14 @@ public class Parser extends CompilerPass {
 
         while (accept(Category.STRUCT, Category.INT, Category.CHAR, Category.VOID)) {
             if (accept(Category.STRUCT) &&
-                    lookAhead(1).category == Category.IDENTIFIER &&
-                    lookAhead(2).category == Category.LBRA) {
+                    acceptLookAhead(1, Category.IDENTIFIER) &&
+                    acceptLookAhead(2, Category.LBRA)) {
                 parseStructDecl();
-            } else if (lookAhead(1).category == Category.IDENTIFIER &&
-                    lookAhead(2).category == Category.LPAR) {
+            } else if ((acceptLookAhead(1, Category.IDENTIFIER) && acceptLookAhead(2, Category.LPAR))
+                    || (acceptLookAhead(1, Category.IDENTIFIER) && acceptLookAhead(2, Category.IDENTIFIER)
+                            && acceptLookAhead(3, Category.LPAR))) {
                 parseFunHeader();
-            } else if (lookAhead(1).category == Category.IDENTIFIER) {
+            } else {
                 parseVarDecl();
             }
         }
