@@ -287,7 +287,7 @@ public class Parser extends CompilerPass {
 
     private Type parseType() {
 
-        Type t = BaseType.UNKNOWN;
+        Type t = null;
 
         if (accept(Category.STRUCT)) {
             expect(Category.STRUCT);
