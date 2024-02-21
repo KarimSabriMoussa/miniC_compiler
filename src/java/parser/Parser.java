@@ -245,11 +245,18 @@ public class Parser extends CompilerPass {
         Token id = expect(Category.IDENTIFIER);
 
         while (accept(Category.LSBR)) {
+
+            int size = 0;
+
             expect(Category.LSBR);
             Token arraySize = expect(Category.INT_LITERAL);
             expect(Category.RSBR);
 
-            ArrayType at = new ArrayType(t, Integer.valueOf(arraySize.data));
+            if(isInteger(arraySize.data)){
+                size = Integer.parseInt(arraySize.data);
+            }
+
+            ArrayType at = new ArrayType(t, size);
             t = at;
         }
 
@@ -525,7 +532,7 @@ public class Parser extends CompilerPass {
     }
 
     private Expr parseAndOp() {
-        
+
         Expr lhs = parseRelEqualityOp();
 
         while (accept(Category.EQ, Category.NE)) {
@@ -718,6 +725,24 @@ public class Parser extends CompilerPass {
             }
         }
         return null;
+    }
+
+    public static boolean isInteger(String str) {
+        if (str == null) {
+            return false;
+        }
+        int length = str.length();
+        if (length == 0) {
+            return false;
+        }
+
+        for (int i = 0; i < length; i++) {
+            char c = str.charAt(i);
+            if (c < '0' || c > '9') {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
