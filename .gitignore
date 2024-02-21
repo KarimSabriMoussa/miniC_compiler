@@ -6,3 +6,4 @@ project/
 .vscode/
 out.log
 fail_log.txt
+/AST_Output
