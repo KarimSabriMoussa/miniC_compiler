@@ -1,7 +1,7 @@
 package ast;
 
 public sealed abstract class Expr implements ASTNode
-        permits VarExpr {
+        permits VarExpr, AddressOfExpr, ArrayAccessExpr, Assign, BinOp, ChrLiteral, FieldAccessExpr, FunCallExpr, IntLiteral, SizeOfExpr, StrLiteral, TypeCastExpr, ValueAtExpr {
 
     public Type type; // to be filled in by the type analyser
 }

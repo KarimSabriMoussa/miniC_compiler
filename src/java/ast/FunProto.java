@@ -3,22 +3,20 @@ package ast;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class FunDecl extends Decl {
+public final class FunProto extends Decl {
 
-    public final List<VarDecl> params;
-    public final Block block;
+    public List<VarDecl> params;
 
-    public FunDecl(Type type, String name, List<VarDecl> params, Block block) {
+    public FunProto(Type type, String name, List<VarDecl> params) {
         this.type = type;
         this.name = name;
         this.params = params;
-        this.block = block;
     }
 
+    @Override
     public List<ASTNode> children() {
         List<ASTNode> children = new ArrayList<ASTNode>();
         children.addAll(params);
-        children.add(block);
         return children;
     }
 

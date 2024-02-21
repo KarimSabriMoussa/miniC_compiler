@@ -5,10 +5,19 @@ import java.util.List;
 
 public final class StructTypeDecl extends Decl {
 
-    // to be completed
-    public List<ASTNode> children() {
+    StructType structType;
+    public List<VarDecl> vds;
 
-        return new ArrayList<>(); // To change!
+    public StructTypeDecl(StructType structType, List<VarDecl> vds) {
+        this.structType = structType;
+        this.vds = vds;
+    }
+
+    public List<ASTNode> children() {
+        List<ASTNode> children = new ArrayList<>();
+        children.addAll(vds);
+
+        return children;
     }
 
 }
