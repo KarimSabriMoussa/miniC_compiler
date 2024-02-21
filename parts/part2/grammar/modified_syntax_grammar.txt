@@ -1,0 +1,74 @@
+# #  comment
+# () grouping
+# [] optional
+# *  zero or more
+# +  one or more
+# |  alternative
+
+# This is a modified syntax which better represents the implementation 
+of the parser which produces an AST, removing any left recursion, 
+performs left factorisation, applies the proper associativity and precedence of operators
+
+
+program    	::= (include)* (structdecl | vardecl | funheader)* EOF
+
+include   	::= "#include" STRING_LITERAL
+
+structdecl 	::= structtype "{" members "}" ";"   
+
+members	   	::= vardecl members | vardecl
+
+vardecl    	::= type IDENT ("[" INT_LITERAL "]")* ";" 
+
+funheader 	::= type IDENT "(" paramlist ")" funtail
+
+funtail 	::= block | ";"
+
+type       	::= ("int" | "char" | "void" | structtype) ("*")*
+
+paramlist	::=  param paramprime | empty
+
+paramprime	::= "," param paramprime | empty
+
+param 		::= type IDENT ("[" INT_LITERAL "]")*
+
+
+stmt		::=   block
+				| "while" "(" exp ")" stmt              # while loop
+				| "if" "(" exp ")" stmt ["else" stmt]   # if then else
+				| "return" [exp] ";"                    # return
+				| exp ";"                               
+				| "continue" ";"                        # continue
+				| "break" ";"          
+
+                
+block      ::= "{" (vardecl)* (stmt)* "}"
+
+exp ::= Assignment
+
+Assignment := BinOp ( "=" Assignment | e)
+
+BinOp ::= OrOp ( "||" OrOp )*
+
+OrOp ::= AndOp ("&&" AndOp)*
+
+AndOp::= relEqualityOp ( ("=="|"!=") relEqualityOp )*
+
+relEqualityOp ::= relationalOp ( (">" | "<" | ">=" | "<=") relationalOp )*
+ 
+relationalOp :== term ( ( "+" | "-") term)*
+
+term ::= factor ( ( "/" | "*"| "%") factor)*
+
+factor ::= AccessExpr | (( "+" | "-" | "*" | "&" | "(type)") factor)
+
+AccessExpr = exprTerminals ( "." IDENT| "[" exp "]" )* 
+
+exprTerminals ::= (IDENT | INT_LITERAL |CHAR_LITERAL| STRING_LITERAL| sizeof| funcall| "(" exp ")") 
+
+
+# first sets
+
+first(stmt) = { "{", "while", "if", "return", "continue", "break", first(exp)};
+first(exp) = { "(" , IDENT, INT_LITERAL, "-", "+", CHAR_LITERAL, STRING_LITERAL. "*", "&", "sizeof" };
+first(binOp) = {">" , "<" , ">=" , "<=" , "!=" , "==" , "+" , "-" , "/" , "*" , "%" , "||" , "&&"};
