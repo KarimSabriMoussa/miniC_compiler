@@ -217,7 +217,7 @@ public class ASTPrinter {
             }
 
             case ValueAtExpr vae -> {
-                writer.print("TypeCastExpr(");
+                writer.print("ValueAtExpr(");
                 visit(vae.expr);
                 writer.print(")");
             }
