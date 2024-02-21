@@ -64,10 +64,6 @@ public class Parser extends CompilerPass {
             Category.MINUS, Category.PLUS, Category.CHAR_LITERAL, Category.STRING_LITERAL, Category.ASTERISK,
             Category.AND, Category.SIZEOF };
 
-    private Category[] first_binop = { Category.GT, Category.LT, Category.LE, Category.GE, Category.NE,
-            Category.EQ, Category.PLUS, Category.MINUS, Category.DIV, Category.ASTERISK, Category.REM,
-            Category.LOGOR, Category.LOGAND };
-
     private Category[] unaryOp = { Category.PLUS, Category.MINUS };
 
     public Parser(Tokeniser tokeniser) {
