@@ -5,14 +5,14 @@ import ast.*;
 public class TypeAnalyzer extends BaseSemanticAnalyzer {
 
 	public Type visit(ASTNode node) {
-		return switch(node) {
+		return switch (node) {
 			case null -> {
 				throw new IllegalStateException("Unexpected null value");
 			}
 
 			case Block b -> {
 				for (ASTNode c : b.children())
-					visit(b);
+					visit(c);
 				yield BaseType.NONE;
 			}
 
@@ -41,6 +41,18 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 				yield BaseType.UNKNOWN; // to change
 			}
 
+			case Decl d -> {
+				yield BaseType.UNKNOWN;
+			}
+
+			case Expr e -> {
+				yield BaseType.UNKNOWN;
+			}
+
+			case Stmt s -> {
+				yield BaseType.UNKNOWN;
+			}
+
 			case Type t -> {
 				yield t;
 			}
@@ -49,6 +61,5 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 		};
 
 	}
-
 
 }

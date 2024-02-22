@@ -4,45 +4,212 @@ import ast.*;
 
 public class NameAnalyzer extends BaseSemanticAnalyzer {
 
+	Scope currScope;
 
 	public void visit(ASTNode node) {
-		switch(node) {
+		switch (node) {
 			case null -> {
 				throw new IllegalStateException("Unexpected null value");
 			}
 
 			case Block b -> {
-				// to complete
+
+				Scope oldScope = currScope;
+				currScope = new Scope(oldScope);
+
+				for (ASTNode child : b.children()) {
+					visit(child);
+				}
+				currScope = oldScope;
 			}
 
 			case FunDecl fd -> {
-				// to complete
+
+				Symbol symbol = currScope.lookupCurrent(fd.name);
+
+				switch (symbol) {
+					case null -> {
+
+						currScope.put(new FunDeclSymbol(fd));
+
+						Scope oldScope = currScope;
+						currScope = new Scope(oldScope);
+
+						for (ASTNode child : fd.children()) {
+							visit(child);
+						}
+
+						currScope = oldScope;
+
+					}
+					case FunProtoSymbol fps -> {
+						Scope oldScope = currScope;
+						currScope = new Scope(oldScope);
+
+						for (ASTNode child : fd.children()) {
+							visit(child);
+						}
+
+						currScope = oldScope;
+					}
+					default -> error("duplicate decleration");
+				}
 			}
 
-			case Program p -> {
-				// to complete
+			case FunProto fp -> {
+
+				Symbol symbol = currScope.lookupCurrent(fp.name);
+
+				switch (symbol) {
+					case null -> {
+						currScope.put(new FunProtoSymbol(fp));
+
+						Scope oldScope = currScope;
+						currScope = new Scope(oldScope);
+
+						for (ASTNode child : fp.children()) {
+							visit(child);
+						}
+
+						currScope = oldScope;
+					}
+					case FunDeclSymbol fps -> {
+						Scope oldScope = currScope;
+						currScope = new Scope(oldScope);
+
+						for (ASTNode child : fp.children()) {
+							visit(child);
+						}
+
+						currScope = oldScope;
+					}
+					default -> error("duplicate decleration");
+				}
+
 			}
 
 			case VarDecl vd -> {
-				// to complete
-			}
 
-			case VarExpr v -> {
-				// to complete
+				Symbol symbol = currScope.lookupCurrent(vd.name);
+
+				if (symbol == null) {
+					currScope.put(new VarDeclSymbol(vd));
+				} else {
+					error("duplicate decleration");
+				}
 			}
 
 			case StructTypeDecl std -> {
-				// to complete
+
+				Symbol symbol = currScope.lookupCurrent(std.name);
+
+				if (symbol == null) {
+					currScope.put(new StructTypeDeclSymbol(std));
+
+					Scope oldScope = currScope;
+					currScope = new Scope(oldScope);
+
+					for (ASTNode child : std.children()) {
+						visit(child);
+					}
+
+					currScope = oldScope;
+				} else {
+					error("duplicate struct decleration");
+				}
+
 			}
 
-			case Type t -> {}
+			case FunCallExpr fce -> {
 
-			// to complete ...
-		};
+				Symbol symbol = currScope.lookup(fce.name);
+
+				switch (symbol) {
+					case FunProtoSymbol fps -> {
+						for (ASTNode child : fce.children()) {
+							visit(child);
+						}
+					}
+
+					case FunDeclSymbol fds -> {
+						for (ASTNode child : fce.children()) {
+							visit(child);
+						}
+					}
+
+					case null, default -> {
+						error("missing function decleration");
+					}
+				}
+
+			}
+
+			case VarExpr ve -> {
+				Symbol symbol = currScope.lookup(ve.name);
+
+				switch (symbol) {
+					case VarDeclSymbol vds -> {
+						visit(vds.vd.type);
+						ve.vd = vds.vd;
+					}
+
+					case null, default -> {
+						error("missing variable decleration");
+					}
+				}
+			}
+
+			case StructType st -> {
+
+				String name = getStructTypeName(st);
+
+				Symbol symbol = currScope.lookup(name);
+
+				switch (symbol) {
+					case StructTypeDeclSymbol std -> {
+
+					}
+
+					case null, default -> {
+						error("missing struct decleration");
+					}
+				}
+
+			}
+
+			case Expr e -> {
+				for (ASTNode child : e.children()) {
+					visit(child);
+				}
+			}
+
+			case Stmt s -> {
+				for (ASTNode child : s.children()) {
+					visit(child);
+				}
+			}
+
+			case Type t -> {
+				for (ASTNode child : t.children()) {
+					visit(child);
+				}
+			}
+
+			case Program p -> {
+
+				currScope = new Scope();
+
+				for (ASTNode child : p.children()) {
+					visit(child);
+				}
+			}
+
+		}
 
 	}
 
-
-
+	private String getStructTypeName(StructType st) {
+		return "struct " + st.name;
+	}
 
 }

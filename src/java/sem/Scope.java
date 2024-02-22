@@ -13,13 +13,23 @@ public class Scope {
 	public Scope() { this(null); }
 	
 	public Symbol lookup(String name) {
-		// To be completed...
+		
+		Scope sc = this;
+
+		while(sc != null){
+			Symbol symbol = sc.lookupCurrent(name);
+			if( symbol != null){
+				return symbol;
+			}
+
+			sc = sc.outer;
+		}
+
 		return null;
 	}
 	
 	public Symbol lookupCurrent(String name) {
-		// To be completed...
-		return null;
+		return symbolTable.get(name);
 	}
 	
 	public void put(Symbol sym) {
