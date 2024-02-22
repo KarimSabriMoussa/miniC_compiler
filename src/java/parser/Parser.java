@@ -222,9 +222,7 @@ public class Parser extends CompilerPass {
 
         StructType st = new StructType(id.data);
 
-        String name = "struct " + st.name;
-
-        return new StructTypeDecl(name, st, vds);
+        return new StructTypeDecl( st, vds);
     }
 
     private List<VarDecl> parseMembers() {

@@ -8,8 +8,9 @@ public final class StructTypeDecl extends Decl {
     public StructType structType;
     public List<VarDecl> vds;
 
-    public StructTypeDecl(String name,StructType structType, List<VarDecl> vds) {
-        this.name = name;
+    public StructTypeDecl(StructType structType, List<VarDecl> vds) {
+
+        this.name = "struct " + structType.name;
         this.structType = structType;
         this.vds = vds;
     }
