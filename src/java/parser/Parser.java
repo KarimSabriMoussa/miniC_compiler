@@ -222,7 +222,9 @@ public class Parser extends CompilerPass {
 
         StructType st = new StructType(id.data);
 
-        return new StructTypeDecl(st, vds);
+        String name = "struct " + st.name;
+
+        return new StructTypeDecl(name, st, vds);
     }
 
     private List<VarDecl> parseMembers() {
@@ -252,7 +254,7 @@ public class Parser extends CompilerPass {
             Token arraySize = expect(Category.INT_LITERAL);
             expect(Category.RSBR);
 
-            if(isInteger(arraySize.data)){
+            if (isInteger(arraySize.data)) {
                 size = Integer.parseInt(arraySize.data);
             }
 
