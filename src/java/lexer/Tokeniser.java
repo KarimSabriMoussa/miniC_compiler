@@ -49,10 +49,10 @@ public class Tokeniser extends CompilerPass {
                         c = scanner.next();
                         if (c == '\n') {
                             return nextToken();
-                        }   
+                        }
                     }
 
-                    if(!scanner.hasNext()){
+                    if (!scanner.hasNext()) {
                         return new Token(Token.Category.EOF, scanner.getLine(), scanner.getColumn());
                     }
                 } else {
@@ -202,7 +202,8 @@ public class Tokeniser extends CompilerPass {
                         if (scanner.hasNext()) {
                             c = scanner.peek();
                             if (escapedChar.indexOf(c) > -1) {
-                                sb.append(c);
+                                sb.deleteCharAt(sb.length() - 1);
+                                sb.append(getChar(c));
                                 scanner.next();
                             } else {
                                 error(c, line, column);
@@ -245,7 +246,8 @@ public class Tokeniser extends CompilerPass {
                         if (scanner.hasNext()) {
                             c = scanner.peek();
                             if (escapedChar.indexOf(c) > -1) {
-                                sb.append(c);
+                                sb.deleteCharAt(sb.length() - 1);
+                                sb.append(getChar(c));
                                 scanner.next();
                             } else {
                                 error(c, line, column);
@@ -444,6 +446,32 @@ public class Tokeniser extends CompilerPass {
         // if we reach this point, it means we did not recognise a valid token
         error(c, line, column);
         return new Token(Token.Category.INVALID, line, column);
+    }
+
+    private char getChar(char chr) {
+
+        switch (chr) {
+            case 'a':
+                return (char) 7;
+            case 'b':
+                return '\b';
+            case 'n':
+                return '\n';
+            case 'r':
+                return '\r';
+            case 't':
+                return '\t';
+            case '\\':
+                return '\\';
+            case '\'':
+                return '\'';
+            case '"':
+                return '\"';
+            case '0':
+                return (char) 0;
+        }
+
+        return (char) 0;
     }
 
 }
