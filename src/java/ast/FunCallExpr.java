@@ -1,6 +1,7 @@
 package ast;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public final class FunCallExpr extends Expr {
 
@@ -14,8 +15,10 @@ public final class FunCallExpr extends Expr {
 
     @Override
     public List<ASTNode> children() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'children'");
+        List<ASTNode> children = new ArrayList<ASTNode>(); 
+        children.addAll(args);
+
+        return children;
     }
-    
+
 }

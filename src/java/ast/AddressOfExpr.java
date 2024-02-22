@@ -1,8 +1,9 @@
 package ast;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public final class AddressOfExpr extends Expr{
+public final class AddressOfExpr extends Expr {
 
     public Expr expr;
 
@@ -12,8 +13,10 @@ public final class AddressOfExpr extends Expr{
 
     @Override
     public List<ASTNode> children() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'children'");
+        List<ASTNode> children = new ArrayList<ASTNode>();
+        children.add(expr);
+
+        return children;
     }
-    
+
 }

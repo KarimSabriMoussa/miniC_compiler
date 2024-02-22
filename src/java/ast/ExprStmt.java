@@ -1,6 +1,7 @@
 package ast;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public final class ExprStmt extends Stmt {
 
@@ -12,8 +13,7 @@ public final class ExprStmt extends Stmt {
 
     @Override
     public List<ASTNode> children() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'children'");
+        return new ArrayList<ASTNode>();
     }
     
 }

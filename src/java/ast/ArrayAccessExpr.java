@@ -1,6 +1,7 @@
 package ast;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public final class ArrayAccessExpr extends Expr {
 
@@ -14,8 +15,11 @@ public final class ArrayAccessExpr extends Expr {
 
     @Override
     public List<ASTNode> children() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'children'");
+        List<ASTNode> children = new ArrayList<ASTNode>();
+        children.add(array);
+        children.add(index);
+
+        return children;
     }
-    
+
 }

@@ -1,6 +1,7 @@
 package ast;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public final class If extends Stmt {
 
@@ -16,8 +17,15 @@ public final class If extends Stmt {
 
     @Override
     public List<ASTNode> children() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'children'");
+        List<ASTNode> children = new ArrayList<ASTNode>();
+        children.add(condition);
+        children.add(stmt);
+
+        if (elseStmt != null) {
+            children.add(elseStmt);
+        }
+
+        return children;
     }
 
 }
