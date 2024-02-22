@@ -29,7 +29,7 @@ import ast.StrLiteral;
 import ast.StructType;
 import ast.StructTypeDecl;
 import ast.Type;
-import ast.TypeCastExpr;
+import ast.TypecastExpr;
 import ast.ValueAtExpr;
 import ast.VarDecl;
 import ast.VarExpr;
@@ -610,7 +610,7 @@ public class Parser extends CompilerPass {
             Type type = parseType();
             expect(Category.RPAR);
             Expr rhs = parseFactor();
-            return new TypeCastExpr(type, rhs);
+            return new TypecastExpr(type, rhs);
         } else {
             return parseAccessExpr();
         }

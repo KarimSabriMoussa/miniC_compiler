@@ -208,8 +208,8 @@ public class ASTPrinter {
                 writer.print(")");
             }
 
-            case TypeCastExpr tce -> {
-                writer.print("TypeCastExpr(");
+            case TypecastExpr tce -> {
+                writer.print("TypecastExpr(");
                 visit(tce.type);
                 writer.print(comma);
                 visit(tce.expr);
