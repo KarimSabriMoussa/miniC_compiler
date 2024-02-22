@@ -1,6 +1,6 @@
 package ast;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class ArrayType implements Type {
@@ -15,9 +15,7 @@ public final class ArrayType implements Type {
 
     @Override
     public List<ASTNode> children() {
-        ArrayList<ASTNode> children = new ArrayList<ASTNode>();
-        children.add(type);
-        return children;
+        return Arrays.asList(type);
     }
 
 }

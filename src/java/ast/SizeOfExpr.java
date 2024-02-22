@@ -1,7 +1,7 @@
 package ast;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public final class SizeOfExpr extends Expr {
 
@@ -13,9 +13,7 @@ public final class SizeOfExpr extends Expr {
 
     @Override
     public List<ASTNode> children() {
-        List<ASTNode> children = new ArrayList<ASTNode>();
-        children.add(type);
-        return children;
+        return Arrays.asList(type);
     }
 
 }

@@ -1,7 +1,7 @@
 package ast;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public final class FieldAccessExpr extends Expr {
 
@@ -15,10 +15,7 @@ public final class FieldAccessExpr extends Expr {
 
     @Override
     public List<ASTNode> children() {
-        List<ASTNode> children = new ArrayList<ASTNode>();
-        children.add(struct);
-
-        return children;
+        return Arrays.asList(struct);
     }
 
 }

@@ -1,7 +1,7 @@
 package ast;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public final class BinOp extends Expr {
 
@@ -17,11 +17,7 @@ public final class BinOp extends Expr {
 
     @Override
     public List<ASTNode> children() {
-        List<ASTNode> children = new ArrayList<ASTNode>();
-        children.add(leftOperand);
-        children.add(rightOperand);
-
-        return children;
+        return Arrays.asList(leftOperand,rightOperand);
     }
     
 }

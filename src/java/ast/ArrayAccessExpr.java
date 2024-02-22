@@ -1,7 +1,7 @@
 package ast;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public final class ArrayAccessExpr extends Expr {
 
@@ -15,11 +15,7 @@ public final class ArrayAccessExpr extends Expr {
 
     @Override
     public List<ASTNode> children() {
-        List<ASTNode> children = new ArrayList<ASTNode>();
-        children.add(array);
-        children.add(index);
-
-        return children;
+        return Arrays.asList(array,index);
     }
 
 }

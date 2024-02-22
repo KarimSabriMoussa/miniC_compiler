@@ -1,7 +1,7 @@
 package ast;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public final class ExprStmt extends Stmt {
 
@@ -13,7 +13,7 @@ public final class ExprStmt extends Stmt {
 
     @Override
     public List<ASTNode> children() {
-        return new ArrayList<ASTNode>();
+        return Arrays.asList(expr);
     }
     
 }

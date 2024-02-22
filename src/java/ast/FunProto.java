@@ -16,6 +16,7 @@ public final class FunProto extends Decl {
     @Override
     public List<ASTNode> children() {
         List<ASTNode> children = new ArrayList<ASTNode>();
+        children.add(type);
         children.addAll(params);
         return children;
     }

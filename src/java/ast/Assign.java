@@ -1,7 +1,7 @@
 package ast;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public final class Assign extends Expr{
 
@@ -15,11 +15,7 @@ public final class Assign extends Expr{
 
     @Override
     public List<ASTNode> children() {
-        List<ASTNode> children = new ArrayList<ASTNode>();
-        children.add(variable);
-        children.add(value);
-
-        return children;
+        return Arrays.asList(variable,value);
     }
     
 }
