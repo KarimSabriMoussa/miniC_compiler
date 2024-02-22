@@ -1,5 +1,8 @@
 #!/bin/bash
 
+ant clean
+ant build
+
 # Define the directory containing test files
 TEST_DIR="tests"
 
