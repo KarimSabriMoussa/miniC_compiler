@@ -93,6 +93,7 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 				Symbol symbol = currScope.lookupCurrent(vd.name);
 
 				if (symbol == null) {
+					visit(vd.type);
 					currScope.put(new VarDeclSymbol(vd));
 				} else {
 					error("duplicate decleration");
@@ -149,7 +150,6 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 
 				switch (symbol) {
 					case VarDeclSymbol vds -> {
-						visit(vds.vd.type);
 						ve.vd = vds.vd;
 					}
 
