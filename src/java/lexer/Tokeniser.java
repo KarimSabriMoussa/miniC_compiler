@@ -49,7 +49,11 @@ public class Tokeniser extends CompilerPass {
                         c = scanner.next();
                         if (c == '\n') {
                             return nextToken();
-                        }
+                        }   
+                    }
+
+                    if(!scanner.hasNext()){
+                        return new Token(Token.Category.EOF, scanner.getLine(), scanner.getColumn());
                     }
                 } else {
                     c = '/';
