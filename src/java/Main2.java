@@ -8,7 +8,6 @@ import ast.ASTPrinter;
 
 import java.io.*;
 
-
 /**
  * This is the entry point to the compiler. This files should not be modified.
  */
@@ -17,20 +16,19 @@ public class Main2 {
     private static final String LOGFILE = "out.log";
     private static final int UNKNOWN_EXCEPTION = 1;
     private static final int FILE_NOT_FOUND = 2;
-    private static final int IO_EXCEPTION   = 3;
-    private static final int MODE_FAIL      = 254;
-    private static final int LEXER_FAIL     = 250;
-    private static final int PARSER_FAIL    = 245;
-    private static final int SEM_FAIL       = 240;
-    private static final int PASS           = 0;
+    private static final int IO_EXCEPTION = 3;
+    private static final int MODE_FAIL = 254;
+    private static final int LEXER_FAIL = 250;
+    private static final int PARSER_FAIL = 245;
+    private static final int SEM_FAIL = 240;
+    private static final int PASS = 0;
 
     private enum Mode {
         LEXER, PARSER, AST, SEMANTICANALYSIS
     }
 
-
     private static void usage() {
-        System.out.println("Usage: java "+ Main2.class.getSimpleName()+" pass inputfile [outputfile]");
+        System.out.println("Usage: java " + Main2.class.getSimpleName() + " pass inputfile [outputfile]");
         System.out.println("where pass is either: -lexer, -parser, -ast, -sem");
         System.out.println("if -ast is chosen, the output file must be specified");
         System.exit(-1);
@@ -40,7 +38,6 @@ public class Main2 {
         if (num >= args.length)
             usage();
     }
-
 
     private static void logThrowableWithoutMessage(Throwable t) {
         try {
@@ -57,10 +54,11 @@ public class Main2 {
             System.exit(IO_EXCEPTION);
         }
     }
-    public static void main(String[] args)  {
+
+    public static void main(String[] args) {
         try {
             compile(args);
-        }  catch (Throwable t) {
+        } catch (Throwable t) {
             t.printStackTrace();
             logThrowableWithoutMessage(t);
             System.exit(UNKNOWN_EXCEPTION);
@@ -105,7 +103,7 @@ public class Main2 {
         try {
             scanner = new Scanner(inputFile);
         } catch (FileNotFoundException e) {
-            System.out.println("File "+inputFile+" does not exist.");
+            System.out.println("File " + inputFile + " does not exist.");
             System.exit(FILE_NOT_FOUND);
             return;
         }
@@ -156,7 +154,7 @@ public class Main2 {
                 try {
                     writer = new PrintWriter(outputFile);
                 } catch (FileNotFoundException e) {
-                    System.out.println("File "+outputFile+" does not exist.");
+                    System.out.println("File " + outputFile + " does not exist.");
                     System.exit(FILE_NOT_FOUND);
                     return;
                 }
@@ -167,7 +165,7 @@ public class Main2 {
                 return;
             }
 
-            assert(mode == Main2.Mode.SEMANTICANALYSIS);
+            assert (mode == Main2.Mode.SEMANTICANALYSIS);
 
             SemanticAnalyzer sem = new SemanticAnalyzer();
             sem.analyze(programAst);
