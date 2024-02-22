@@ -184,14 +184,8 @@ public class Parser extends CompilerPass {
                     acceptLookAhead(1, Category.IDENTIFIER) &&
                     acceptLookAhead(2, Category.LBRA)) {
                 decls.add(parseStructDecl());
-            } else if ((accept(Category.INT, Category.CHAR, Category.VOID) && acceptLookAhead(1, Category.IDENTIFIER)
-                    && acceptLookAhead(2, Category.LPAR))
-                    || (accept(Category.STRUCT) && acceptLookAhead(1, Category.IDENTIFIER)
-                            && acceptLookAhead(2, Category.IDENTIFIER)
-                            && acceptLookAhead(3, Category.LPAR))) {
-                decls.add(parseFunHeader());
             } else {
-                decls.add(parseVarDecl());
+                decls.add(parseDecl());
             }
         }
 
@@ -222,7 +216,7 @@ public class Parser extends CompilerPass {
 
         StructType st = new StructType(id.data);
 
-        return new StructTypeDecl( st, vds);
+        return new StructTypeDecl(st, vds);
     }
 
     private List<VarDecl> parseMembers() {
@@ -238,9 +232,22 @@ public class Parser extends CompilerPass {
         return vds;
     }
 
-    private VarDecl parseVarDecl() {
+    private Decl parseDecl() {
 
         Type t = parseType();
+
+        if (accept(Category.IDENTIFIER) && acceptLookAhead(1, Category.LPAR)) {
+            return parseFunHeader(t);
+        } else if (accept(Category.IDENTIFIER)) {
+            return parseVarDecl(t);
+        } else {
+            error(Category.IDENTIFIER);
+            return null;
+        }
+
+    }
+
+    private VarDecl parseVarDecl(Type t) {
 
         Token id = expect(Category.IDENTIFIER);
 
@@ -265,12 +272,36 @@ public class Parser extends CompilerPass {
         return new VarDecl(t, id.data);
     }
 
-    private Decl parseFunHeader() {
+    private VarDecl parseVarDecl() {
+
+        Type t = parseType();
+        Token id = expect(Category.IDENTIFIER);
+
+        while (accept(Category.LSBR)) {
+
+            int size = 0;
+
+            expect(Category.LSBR);
+            Token arraySize = expect(Category.INT_LITERAL);
+            expect(Category.RSBR);
+
+            if (isInteger(arraySize.data)) {
+                size = Integer.parseInt(arraySize.data);
+            }
+
+            ArrayType at = new ArrayType(t, size);
+            t = at;
+        }
+
+        expect(Category.SC);
+
+        return new VarDecl(t, id.data);
+    }
+
+    private Decl parseFunHeader(Type t) {
 
         Decl decl = null;
         List<VarDecl> params = new ArrayList<>();
-
-        Type t = parseType();
         Token id = expect(Category.IDENTIFIER);
 
         expect(Category.LPAR);
