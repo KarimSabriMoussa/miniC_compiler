@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 public final class TypecastExpr extends Expr {
 
-    public Type type;
     public Expr expr;
 
     public TypecastExpr(Type type, Expr expr) {
@@ -15,7 +14,7 @@ public final class TypecastExpr extends Expr {
 
     @Override
     public List<ASTNode> children() {
-        return Arrays.asList(type,expr);
+        return Arrays.asList(type, expr);
     }
 
 }
