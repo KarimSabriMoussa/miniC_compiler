@@ -11,14 +11,12 @@ public class FunAnalyzer extends BaseSemanticAnalyzer {
 
     Map<String, FunProto> prototypes;
     Map<String, FunDecl> decls;
-    Map<String, Return> returns;
     List<FunCallExpr> calls;
     FunDecl currDecl;
 
     public FunAnalyzer() {
         this.prototypes = new HashMap<>();
         this.decls = new HashMap<>();
-        this.returns = new HashMap<>();
         this.calls = new ArrayList<>();
     }
 
@@ -43,7 +41,6 @@ public class FunAnalyzer extends BaseSemanticAnalyzer {
             }
             case Return r -> {
                 r.fd = currDecl;
-                returns.put(r.fd.name, r);
             }
             case Program p -> {
                 for (ASTNode child : p.children()) {
@@ -51,22 +48,10 @@ public class FunAnalyzer extends BaseSemanticAnalyzer {
                 }
                 matchFunProtoToFunDecl();
                 assignFunDeclToCall();
-                checkReturnStmt();
             }
             case ASTNode n -> {
                 for (ASTNode child : n.children()) {
                     visit(child);
-                }
-            }
-        }
-    }
-
-    private void checkReturnStmt() {
-
-        for (FunDecl fd : decls.values()) {
-            if (fd.type != BaseType.VOID) {
-                if (returns.get(fd.name) == null) {
-                    error("missing return statement");
                 }
             }
         }
@@ -91,16 +76,19 @@ public class FunAnalyzer extends BaseSemanticAnalyzer {
 
                 if (fd.params.size() != fp.params.size()) {
                     error("number of function prototype and decleration parameters do not match");
+                    return;
                 }
 
                 if (!Type.equals(fd.type, fp.type)) {
                     error("function prototype and decleration return types do not match");
+                    return;
                 }
 
                 for (int i = 0; i < fd.params.size(); i++) {
-                    if (!Type.equals(fd.params.get(i).type, fp.params.get(i).type)) {
+                    if (!(Type.equals(fd.params.get(i).type, fp.params.get(i).type)
+                            &&fd.params.get(i).name.equals(fp.params.get(i).name))) {
                         error("function prototype and decleration parameter types do not match");
-                        break;
+                        return;
                     }
                 }
             }
