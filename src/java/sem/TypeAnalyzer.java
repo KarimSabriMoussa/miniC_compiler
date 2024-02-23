@@ -132,7 +132,12 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 				for (ASTNode child : fce.children()) {
 					visit(child);
 				}
-				yield matchFunCallToFunDecl(fce, fce.fd);
+
+				if (fce.fd != null) {
+					yield matchFunCallToFunDecl(fce, fce.fd);
+				}
+
+				yield BaseType.UNKNOWN;
 			}
 
 			case ArrayAccessExpr aae -> {
@@ -276,8 +281,13 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 				yield BaseType.UNKNOWN;
 			}
 			case VarExpr v -> {
-				v.type = v.vd.type;
-				yield v.type;
+
+				if (v.vd != null) {
+					v.type = v.vd.type;
+					yield v.type;
+				}
+
+				yield BaseType.UNKNOWN;
 			}
 
 			case IntLiteral il -> {
