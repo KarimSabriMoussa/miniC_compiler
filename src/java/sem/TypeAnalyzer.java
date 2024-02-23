@@ -205,7 +205,7 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 			}
 
 			case AddressOfExpr aoe -> {
-				Type exprT = visit(aoe.type);
+				Type exprT = visit(aoe.expr);
 				aoe.type = new PointerType(exprT);
 
 				yield aoe.type;
