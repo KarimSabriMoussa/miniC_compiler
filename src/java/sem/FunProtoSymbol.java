@@ -4,7 +4,7 @@ import ast.FunProto;
 
 public class FunProtoSymbol extends Symbol{
 
-    FunProto fp;
+    public FunProto fp;
 
     public FunProtoSymbol(FunProto fp) {
         super(fp.name);
