@@ -4,38 +4,40 @@ import ast.ASTNode;
 import ast.FunDecl;
 import ast.Program;
 import ast.VarDecl;
+import java.util.Map;
+import java.util.HashMap;
 
 public class FunDeclAnalyzer extends BaseSemanticAnalyzer {
 
-    Scope scope;
-
-    public FunDeclAnalyzer() {
-        this.scope = new Scope();
-    }
+    private Map<String, Symbol> symbolTable;
 
     public void visit(ASTNode node) {
         switch (node) {
             case FunDecl fd -> {
+
+                symbolTable = new HashMap<>();
+
                 for (VarDecl vd : fd.params) {
-                    Symbol symbol = scope.lookupCurrent(vd.name);
+                    Symbol symbol = symbolTable.get(vd.name);
 
                     if (symbol == null) {
-                        visit(vd.type);
-                        scope.put(new VarDeclSymbol(vd));
+                        VarDeclSymbol sym = new VarDeclSymbol(vd);
+                        symbolTable.put(sym.name, sym);
                     } else {
                         error("duplicate decleration");
                     }
                 }
                 for (VarDecl vd : fd.block.vds) {
-                    Symbol symbol = scope.lookupCurrent(vd.name);
+                    Symbol symbol = symbolTable.get(vd.name);
 
                     if (symbol == null) {
-                        visit(vd.type);
-                        scope.put(new VarDeclSymbol(vd));
+                        VarDeclSymbol sym = new VarDeclSymbol(vd);
+                        symbolTable.put(sym.name, sym);
                     } else {
                         error("duplicate decleration");
                     }
                 }
+
             }
             case Program p -> {
                 for (ASTNode child : p.children()) {
@@ -43,7 +45,6 @@ public class FunDeclAnalyzer extends BaseSemanticAnalyzer {
                 }
             }
             case ASTNode n -> {
-
             }
         }
     }
