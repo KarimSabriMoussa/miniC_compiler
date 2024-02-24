@@ -226,19 +226,22 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 
 				Type exprT = visit(tce.expr);
 
-				switch (tce.type) {
+				switch (tce.target_type) {
 					case BaseType.INT -> {
 						if (exprT == BaseType.CHAR) {
+							tce.type = BaseType.INT;
 							yield tce.type;
 						}
 					}
 					case PointerType pt1 -> {
 						switch (exprT) {
 							case PointerType pt2 -> {
+								tce.type = pt1;
 								yield tce.type;
 							}
 							case ArrayType at -> {
 								if (Type.equals(at.type, pt1.type)) {
+									tce.type = pt1;
 									yield tce.type;
 								}
 							}

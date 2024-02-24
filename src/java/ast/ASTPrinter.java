@@ -184,7 +184,7 @@ public class ASTPrinter {
 
             case SizeOfExpr soe -> {
                 writer.print("SizeOfExpr(");
-                visit(soe.type);
+                visit(soe.target_type);
                 writer.print(")");
             }
 
@@ -210,7 +210,7 @@ public class ASTPrinter {
 
             case TypecastExpr tce -> {
                 writer.print("TypecastExpr(");
-                visit(tce.type);
+                visit(tce.target_type);
                 writer.print(comma);
                 visit(tce.expr);
                 writer.print(")");
