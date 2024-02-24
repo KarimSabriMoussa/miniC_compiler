@@ -53,7 +53,7 @@ public class Tokeniser extends CompilerPass {
                     }
 
                     if (!scanner.hasNext()) {
-                        return new Token(Token.Category.EOF, scanner.getLine(), scanner.getColumn());
+                        return nextToken();
                     }
                 } else {
                     c = '/';
