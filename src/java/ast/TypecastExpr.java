@@ -15,7 +15,7 @@ public final class TypecastExpr extends Expr {
 
     @Override
     public List<ASTNode> children() {
-        return Arrays.asList(type, expr);
+        return Arrays.asList(target_type, expr);
     }
 
 }
