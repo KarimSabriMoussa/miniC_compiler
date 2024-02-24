@@ -188,7 +188,7 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 					}
 				}
 
-				error("struct decleration does not contain this member");
+				error("struct declaration does not contain this member");
 				yield BaseType.UNKNOWN;
 			}
 
@@ -384,13 +384,13 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 	private Type matchFunCallToFunDecl(FunCallExpr fce, FunDecl fd) {
 
 		if (fd.params.size() != fce.args.size()) {
-			error("number of function call args and decleration parameters do not match");
+			error("number of function call args and declaration parameters do not match");
 			return BaseType.UNKNOWN;
 		}
 
 		for (int i = 0; i < fd.params.size(); i++) {
 			if (!Type.equals(fd.params.get(i).type, fce.args.get(i).type)) {
-				error("function call args and decleration parameter types do not match");
+				error("function call args and declaration parameter types do not match");
 				return BaseType.UNKNOWN;
 			}
 		}

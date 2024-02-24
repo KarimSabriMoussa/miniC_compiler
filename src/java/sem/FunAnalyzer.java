@@ -68,26 +68,26 @@ public class FunAnalyzer extends BaseSemanticAnalyzer {
 
         for (String name : prototypes.keySet()) {
             if (!decls.containsKey(name)) {
-                error("missing function decleration for a prototype");
+                error("missing function declaration for a prototype");
             } else {
 
                 FunDecl fd = decls.get(name);
                 FunProto fp = prototypes.get(name);
 
                 if (fd.params.size() != fp.params.size()) {
-                    error("number of function prototype and decleration parameters do not match");
+                    error("number of function prototype and declaration parameters do not match");
                     return;
                 }
 
                 if (!Type.equals(fd.type, fp.type)) {
-                    error("function prototype and decleration return types do not match");
+                    error("function prototype and declaration return types do not match");
                     return;
                 }
 
                 for (int i = 0; i < fd.params.size(); i++) {
                     if (!(Type.equals(fd.params.get(i).type, fp.params.get(i).type)
                             &&fd.params.get(i).name.equals(fp.params.get(i).name))) {
-                        error("function prototype and decleration parameter types do not match");
+                        error("function prototype and declaration parameter types do not match");
                         return;
                     }
                 }

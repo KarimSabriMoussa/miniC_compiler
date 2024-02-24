@@ -52,7 +52,7 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 
 						currScope = oldScope;
 					}
-					default -> error("duplicate decleration");
+					default -> error("duplicate declaration");
 				}
 			}
 
@@ -83,7 +83,7 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 
 						currScope = oldScope;
 					}
-					default -> error("duplicate decleration");
+					default -> error("duplicate declaration");
 				}
 
 			}
@@ -96,7 +96,7 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 					visit(vd.type);
 					currScope.put(new VarDeclSymbol(vd));
 				} else {
-					error("duplicate decleration");
+					error("duplicate declaration");
 				}
 			}
 
@@ -116,7 +116,7 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 
 					currScope = oldScope;
 				} else {
-					error("duplicate struct decleration");
+					error("duplicate struct declaration");
 				}
 
 			}
@@ -139,7 +139,7 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 					}
 
 					case null, default -> {
-						error("missing function decleration");
+						error("missing function declaration");
 					}
 				}
 
@@ -154,7 +154,7 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 					}
 
 					case null, default -> {
-						error("missing variable decleration");
+						error("missing variable declaration");
 					}
 				}
 			}
@@ -171,7 +171,7 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 					}
 
 					case null, default -> {
-						error("missing struct decleration");
+						error("missing struct declaration");
 					}
 				}
 

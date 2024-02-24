@@ -23,7 +23,7 @@ public class StructDeclAnalyzer extends BaseSemanticAnalyzer {
                 StructType structType = std.structType;
                 for (VarDecl vd : std.vds) {
                     if (!checkVarDecl(vd.type, structType)) {
-                        error("recursive struct type variable decleration");
+                        error("recursive struct type variable declaration");
                     }
                 }
             }

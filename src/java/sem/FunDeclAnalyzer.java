@@ -24,7 +24,7 @@ public class FunDeclAnalyzer extends BaseSemanticAnalyzer {
                         VarDeclSymbol sym = new VarDeclSymbol(vd);
                         symbolTable.put(sym.name, sym);
                     } else {
-                        error("duplicate decleration");
+                        error("duplicate declaration");
                     }
                 }
                 for (VarDecl vd : fd.block.vds) {
@@ -34,7 +34,7 @@ public class FunDeclAnalyzer extends BaseSemanticAnalyzer {
                         VarDeclSymbol sym = new VarDeclSymbol(vd);
                         symbolTable.put(sym.name, sym);
                     } else {
-                        error("duplicate decleration");
+                        error("duplicate declaration");
                     }
                 }
 
