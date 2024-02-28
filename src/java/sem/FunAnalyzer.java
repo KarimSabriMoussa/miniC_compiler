@@ -41,6 +41,10 @@ public class FunAnalyzer extends BaseSemanticAnalyzer {
             }
             case Return r -> {
                 r.fd = currDecl;
+
+                for (ASTNode child : r.children()) {
+                    visit(child);
+                }
             }
             case Program p -> {
                 for (ASTNode child : p.children()) {
@@ -86,7 +90,7 @@ public class FunAnalyzer extends BaseSemanticAnalyzer {
 
                 for (int i = 0; i < fd.params.size(); i++) {
                     if (!(Type.equals(fd.params.get(i).type, fp.params.get(i).type)
-                            &&fd.params.get(i).name.equals(fp.params.get(i).name))) {
+                            && fd.params.get(i).name.equals(fp.params.get(i).name))) {
                         error("function prototype and declaration parameter types do not match");
                         return;
                     }
