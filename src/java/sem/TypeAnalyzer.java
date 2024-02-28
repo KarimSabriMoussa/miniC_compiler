@@ -174,6 +174,9 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 				switch (structType) {
 					case StructType st -> {
 						std = structs.get(st.name);
+						if (std == null) {
+							yield BaseType.UNKNOWN;
+						}
 					}
 					default -> {
 						error("cannot access field of an expression of type other than a struct");
