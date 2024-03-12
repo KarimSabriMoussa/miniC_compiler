@@ -9,8 +9,7 @@ import gen.asm.AssemblyProgram;
  */
 public class ProgramCodeGen extends CodeGen {
 
-
-    private final AssemblyProgram.Section dataSection ;
+    private final AssemblyProgram.Section dataSection;
 
     public ProgramCodeGen(AssemblyProgram asmProg) {
         this.asmProg = asmProg;
@@ -18,23 +17,21 @@ public class ProgramCodeGen extends CodeGen {
     }
 
     void generate(Program p) {
-        // allocate all variables
-        MemAllocCodeGen allocator = new MemAllocCodeGen(asmProg);
-        allocator.visit(p);
+        // allocate global variables
+        GlobalMemAllocCodeGen globablAllocator = new GlobalMemAllocCodeGen(asmProg, dataSection);
+        globablAllocator.visit(p);
 
         // generate the code for each function
         p.decls.forEach((d) -> {
-            switch(d) {
+            switch (d) {
                 case FunDecl fd -> {
                     FunCodeGen fcg = new FunCodeGen(asmProg);
                     fcg.visit(fd);
                 }
-                default -> {}// nothing to do
-            }});
+                default -> {
+                }
+            }
+        });
     }
-
-
-
-
 
 }

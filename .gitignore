@@ -7,3 +7,4 @@ project/
 out.log
 fail_log.txt
 /AST_Output
+/gen_output
