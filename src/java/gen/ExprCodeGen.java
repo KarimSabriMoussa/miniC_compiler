@@ -90,6 +90,25 @@ public class ExprCodeGen extends CodeGen {
 
                 yield null;
             }
+            case VarExpr ve -> {
+                if (ve.vd.globalLabel != null) {
+                    Section currSection = asmProg.getCurrentSection();
+                    Register addr = Register.Virtual.create();
+                    Register dst = Register.Virtual.create();
+                    currSection.emit(OpCode.LA, addr, ve.vd.globalLabel);
+                    currSection.emit(OpCode.LW, dst, addr, 0);
+
+                    yield dst;
+                }
+
+                yield null;
+            }
+            case StrLiteral sl -> {
+                Section currSection = asmProg.getCurrentSection();
+                Register addr = Register.Virtual.create();
+                currSection.emit(OpCode.LA, addr, sl.label);
+                yield addr;
+            }
             default -> {
 
                 yield null;

@@ -54,4 +54,16 @@ public sealed interface Type extends ASTNode
                         }
                 };
         }
+
+        public static int getSize(Type type) {
+                return switch (type) {
+                        case BaseType.VOID -> 0;
+                        case BaseType.INT -> 4;
+                        case BaseType.CHAR -> 1;
+                        case ArrayType a -> a.arraySize * getSize(a.type);
+                        case PointerType p -> 4;
+                        case StructType s -> s.size;
+                        default -> throw new IllegalStateException("can't compute size for this type");
+                };
+        }
 }

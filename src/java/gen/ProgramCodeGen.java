@@ -18,8 +18,11 @@ public class ProgramCodeGen extends CodeGen {
 
     void generate(Program p) {
         // allocate global variables
-        GlobalMemAllocCodeGen globablAllocator = new GlobalMemAllocCodeGen(asmProg, dataSection);
-        globablAllocator.visit(p);
+        GlobalMemAllocCodeGen globalAllocator = new GlobalMemAllocCodeGen(asmProg, dataSection);
+        globalAllocator.visit(p);
+        // allocate string literals 
+        StrLiteralMemAllocCodeGen strLiteralAllocator = new StrLiteralMemAllocCodeGen(asmProg, dataSection);
+        strLiteralAllocator.visit(p);
 
         // generate the code for each function
         p.decls.forEach((d) -> {
