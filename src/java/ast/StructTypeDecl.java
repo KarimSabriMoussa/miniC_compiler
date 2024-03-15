@@ -7,6 +7,7 @@ public final class StructTypeDecl extends Decl {
 
     public StructType structType;
     public List<VarDecl> vds;
+    public int size;
 
     public StructTypeDecl(StructType structType, List<VarDecl> vds) {
 

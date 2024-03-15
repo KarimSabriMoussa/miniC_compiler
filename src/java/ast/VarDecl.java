@@ -9,6 +9,7 @@ public final class VarDecl extends Decl {
 
     public Label globalLabel;
     public int structOffset;
+    public int fpOffset;
 
     public VarDecl(Type type, String name) {
 	    this.type = type;

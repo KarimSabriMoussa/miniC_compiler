@@ -7,7 +7,7 @@ public sealed interface Type extends ASTNode
                 return switch (t1) {
                         case null -> {
                                 yield false;
-                        }
+                        } 
                         case ArrayType at1 -> {
                                 yield switch (t2) {
                                         case ArrayType at2 -> {
@@ -62,7 +62,19 @@ public sealed interface Type extends ASTNode
                         case BaseType.CHAR -> 1;
                         case ArrayType a -> a.arraySize * getSize(a.type);
                         case PointerType p -> 4;
-                        case StructType s -> s.size;
+                        case StructType s -> s.std.size;
+                        default -> throw new IllegalStateException("can't compute size for this type");
+                };
+        }
+
+        public static int getStackSize(Type type) {
+                return switch (type) {
+                        case BaseType.VOID -> 0;
+                        case BaseType.INT -> 4;
+                        case BaseType.CHAR -> 1;
+                        case ArrayType a -> 4;
+                        case PointerType p -> 4;
+                        case StructType s -> s.std.size;
                         default -> throw new IllegalStateException("can't compute size for this type");
                 };
         }
