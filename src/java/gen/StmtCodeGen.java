@@ -36,15 +36,13 @@ public class StmtCodeGen extends CodeGen {
                 }
             }
             case ExprStmt es -> {
-                ExprCodeGen ecd = new ExprCodeGen(asmProg);
-                ecd.visit(es.expr);
+                (new ExprCodeGen(asmProg)).visit(es.expr);
             }
             case If i -> {
                 Section currSection = asmProg.getCurrentSection();
-                ExprCodeGen ecd = new ExprCodeGen(asmProg);
-                Register condition = ecd.visit(i.condition);
-                Label elseLabel = Label.create();
-                Label endLabel = Label.create();
+                Register condition = (new ExprCodeGen(asmProg)).visit(i.condition);
+                Label elseLabel = Label.create("elseLabel");
+                Label endLabel = Label.create("endLabel");
 
                 currSection.emit(OpCode.BEQ, condition, Register.Arch.zero, elseLabel);
                 visit(i.stmt);
@@ -58,10 +56,9 @@ public class StmtCodeGen extends CodeGen {
             case While w -> {
 
                 Section currSection = asmProg.getCurrentSection();
-                ExprCodeGen ecd = new ExprCodeGen(asmProg);
                 Register condition;
-                Label loop = Label.create();
-                Label endLabel = Label.create();
+                Label loop = Label.create("loop");
+                Label endLabel = Label.create("endLabel");
 
                 Label prevLoopStart = currLoopStart;
                 Label prevLoopEnd = currLoopEnd;
@@ -70,7 +67,7 @@ public class StmtCodeGen extends CodeGen {
                 currLoopEnd = endLabel;
 
                 currSection.emit(loop);
-                condition = ecd.visit(w.condition);
+                condition = (new ExprCodeGen(asmProg)).visit(w.condition);
                 currSection.emit(OpCode.BEQ, condition, Register.Arch.zero, endLabel);
                 visit(w.stmt);
                 currSection.emit(OpCode.B, loop);
@@ -80,7 +77,44 @@ public class StmtCodeGen extends CodeGen {
                 currLoopEnd = prevLoopEnd;
 
             }
-            case Stmt st -> {
+            case Return r -> {
+
+                Section currSection = asmProg.getCurrentSection();
+
+                if (r.expr != null) {
+                    Register returnValueRegister = ((new ExprCodeGen(asmProg))).visit(r.expr);
+
+                    switch (r.fd.type) {
+                        case BaseType.INT -> {
+                            currSection.emit(OpCode.SW, returnValueRegister, Register.Arch.fp,
+                                    r.fd.returnValueFpOffset);
+                        }
+                        case BaseType.CHAR -> {
+                            currSection.emit(OpCode.SB, returnValueRegister, Register.Arch.fp,
+                                    r.fd.returnValueFpOffset);
+                        }
+                        case PointerType pt -> {
+                            currSection.emit(OpCode.SW, returnValueRegister, Register.Arch.fp,
+                                    r.fd.returnValueFpOffset);
+                        }
+                        case ArrayType at -> {
+                            currSection.emit(OpCode.SW, returnValueRegister, Register.Arch.fp,
+                                    r.fd.returnValueFpOffset);
+                        }
+                        case StructType st -> {
+                            for (int i = 0; i < st.std.size; i += 4) {
+                                Register word = Register.Virtual.create();
+                                currSection.emit(OpCode.LW, word, returnValueRegister, i);
+                                currSection.emit(OpCode.SW, word, Register.Arch.fp, i + r.fd.returnValueFpOffset);
+                            }
+                        }
+                        default -> {
+
+                        }
+                    }
+                }
+
+                currSection.emit(OpCode.J,r.fd.returnLabel);
 
             }
         }
