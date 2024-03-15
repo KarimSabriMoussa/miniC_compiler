@@ -19,10 +19,23 @@ public class StrLiteralMemAllocCodeGen extends CodeGen {
     void visit(ASTNode n) {
         switch (n) {
             case StrLiteral sl -> {
+
+                staticDataSection.emit(new Directive("align 2"));
+
                 Label label = Label.create();
                 staticDataSection.emit(label);
-                staticDataSection.emit(new Directive("asciiz " + "\"" + sl.str + "\""));
+                String escapedString = sl.str
+                        .replace("\\", "\\\\")
+                        .replace("\b", "\\b")
+                        .replace("\n", "\\n")
+                        .replace("\t", "\\t")
+                        .replace("\r", "\\r")
+                        .replace("\f", "\\f")
+                        .replace("\"", "\\\"")
+                        .replace("\'", "\\\'");
+                staticDataSection.emit(new Directive("asciiz " + "\"" + escapedString + "\""));
                 sl.label = label;
+
             }
             case ASTNode a -> {
                 for (ASTNode child : a.children()) {

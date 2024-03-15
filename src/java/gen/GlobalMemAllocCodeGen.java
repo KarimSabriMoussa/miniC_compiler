@@ -9,7 +9,6 @@ import gen.asm.AssemblyProgram.Section;
 public class GlobalMemAllocCodeGen extends CodeGen {
 
     private Section staticDataSection;
-    private int staticDataPointer = 0;
 
     public GlobalMemAllocCodeGen(AssemblyProgram asmProg, Section dataSection) {
         this.staticDataSection = dataSection;
@@ -31,14 +30,15 @@ public class GlobalMemAllocCodeGen extends CodeGen {
                     size += Type.getSize(vd.type);
                 }
 
-                std.structType.size = size;
+                if (size % 4 != 0) {
+                    size += 4 - (size % 4);
+                }
+
+                std.size = size;
             }
             case VarDecl vd -> {
 
-                if (staticDataPointer % 4 != 0) {
-                    staticDataSection.emit(new Directive("align 2"));
-                    staticDataPointer += 4 - (staticDataPointer % 4);
-                }
+                staticDataSection.emit(new Directive("align 2"));
 
                 int size = Type.getSize(vd.type);
 
@@ -46,14 +46,16 @@ public class GlobalMemAllocCodeGen extends CodeGen {
 
                 staticDataSection.emit(label);
                 staticDataSection.emit(new Directive("space " + size));
-                staticDataPointer += size;
 
                 vd.globalLabel = label;
             }
-            case ASTNode a -> {
-                for (ASTNode child : a.children()) {
+            case Program p -> {
+                for (ASTNode child : p.children()) {
                     visit(child);
                 }
+            }
+            case ASTNode a -> {
+
             }
         }
     }
