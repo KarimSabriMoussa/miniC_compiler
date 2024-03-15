@@ -177,6 +177,8 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 						if (std == null) {
 							yield BaseType.UNKNOWN;
 						}
+
+						fae.st = st;
 					}
 					default -> {
 						error("cannot access field of an expression of type other than a struct");

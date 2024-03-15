@@ -166,8 +166,8 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 				Symbol symbol = currScope.lookup(name);
 
 				switch (symbol) {
-					case StructTypeDeclSymbol std -> {
-
+					case StructTypeDeclSymbol stds -> {
+						st.std = stds.std;
 					}
 
 					case null, default -> {
