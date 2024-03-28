@@ -1,0 +1,1 @@
+Program(VarDecl(ArrayType(ArrayType(INT,10),10),array),FunDecl(VOID,main,Block(ExprStmt(ArrayAccessExpr(ArrayAccessExpr(VarExpr(array),IntLiteral(3)),IntLiteral(2))))))
