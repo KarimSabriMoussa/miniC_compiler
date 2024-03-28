@@ -230,6 +230,8 @@ public class ExprCodeGen extends CodeGen {
                 Register returnValue = Register.Virtual.create();
 
                 currSection.emit(OpCode.ADDIU, Register.Arch.sp, Register.Arch.sp, -fce.fd.argSegmentSize);
+                
+                currSection.emit(OpCode.ADDIU, Register.Arch.sp, Register.Arch.sp, -4);
 
                 for (int i = 0; i < fce.args.size(); i++) {
                     Register argValue = visit(fce.args.get(i));
@@ -259,6 +261,8 @@ public class ExprCodeGen extends CodeGen {
                         }
                     }
                 }
+
+                currSection.emit(OpCode.ADDIU, Register.Arch.sp, Register.Arch.sp, 4);
 
                 currSection.emit(OpCode.JAL, fce.fd.label);
 
