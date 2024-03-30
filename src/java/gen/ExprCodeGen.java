@@ -230,7 +230,7 @@ public class ExprCodeGen extends CodeGen {
                 Register returnValue = Register.Virtual.create();
 
                 currSection.emit(OpCode.ADDIU, Register.Arch.sp, Register.Arch.sp, -fce.fd.argSegmentSize);
-                
+
                 currSection.emit(OpCode.ADDIU, Register.Arch.sp, Register.Arch.sp, -4);
 
                 for (int i = 0; i < fce.args.size(); i++) {
@@ -304,13 +304,7 @@ public class ExprCodeGen extends CodeGen {
                         currSection.emit(OpCode.LB, value, addr, 0);
                     }
                     case ArrayType at -> {
-                        if (ve.vd.fpOffset > 0) {
-                            Register arrayAddr  = Register.Virtual.create();
-                            currSection.emit(OpCode.LW, arrayAddr, addr, 0);
-                            yield arrayAddr;
-                        } else {
-                            yield addr;
-                        }
+                        yield addr;
                     }
                     case PointerType pt -> {
                         currSection.emit(OpCode.LW, value, addr, 0);

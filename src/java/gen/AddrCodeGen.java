@@ -24,6 +24,17 @@ public class AddrCodeGen extends CodeGen {
                     currSection.emit(OpCode.LA, addr, ve.vd.globalLabel);
                 } else {
                     currSection.emit(OpCode.ADDIU, addr, Register.Arch.fp, ve.vd.fpOffset);
+
+                    switch (ve.vd.type) {
+                        case ArrayType at -> {
+                            if (ve.vd.fpOffset > 0) {
+                                currSection.emit(OpCode.LW, addr, addr, 0);
+                            } 
+                        }
+                        default -> {
+
+                        }
+                    }
                 }
 
                 yield addr;
