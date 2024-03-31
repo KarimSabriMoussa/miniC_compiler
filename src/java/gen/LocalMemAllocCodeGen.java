@@ -29,6 +29,10 @@ public class LocalMemAllocCodeGen extends CodeGen {
                     offset += Type.getStackSize(param.type);
                 }
 
+                if (offset % 4 != 0) {
+                    offset += 4 - (offset % 4);
+                }
+
                 fd.argSegmentSize = offset - 4;
 
                 fpOffset = -4;

@@ -16,9 +16,15 @@ public class AddrCodeGen extends CodeGen {
 
     public Register visit(Expr e) {
         return switch (e) {
+            case null -> {
+                throw new IllegalStateException("Unexpected null value");
+            }
             case VarExpr ve -> {
                 Section currSection = asmProg.getCurrentSection();
                 Register addr = Register.Virtual.create();
+
+                
+                currSection.emit("get address of the variable");
 
                 if (ve.vd.globalLabel != null) {
                     currSection.emit(OpCode.LA, addr, ve.vd.globalLabel);
@@ -29,7 +35,7 @@ public class AddrCodeGen extends CodeGen {
                         case ArrayType at -> {
                             if (ve.vd.fpOffset > 0) {
                                 currSection.emit(OpCode.LW, addr, addr, 0);
-                            } 
+                            }
                         }
                         default -> {
 
@@ -42,9 +48,12 @@ public class AddrCodeGen extends CodeGen {
             case FieldAccessExpr fae -> {
 
                 Section currSection = asmProg.getCurrentSection();
+                
+                currSection.emit("get address of the structure");
                 Register addr = visit(fae.struct);
                 VarDecl member = fae.getMember(fae.member);
-
+                
+                currSection.emit("add offset of the member within the struct");
                 currSection.emit(OpCode.ADDIU, addr, addr, member.structOffset);
 
                 yield addr;
@@ -53,9 +62,14 @@ public class AddrCodeGen extends CodeGen {
                 Section currSection = asmProg.getCurrentSection();
                 Register addr = Register.Virtual.create();
 
+                currSection.emit("get base address of the array");
                 Register baseAddr = visit(aae.array);
+                
+                currSection.emit("get index of of the array access");
                 Register offset = (new ExprCodeGen(asmProg)).visit(aae.index);
                 Register typeSize = Register.Virtual.create();
+                
+                currSection.emit("getting address of element based on the index");
                 currSection.emit(OpCode.LI, typeSize, Type.getSize(aae.type));
                 currSection.emit(OpCode.MUL, offset, offset, typeSize);
                 currSection.emit(OpCode.ADD, addr, baseAddr, offset);
@@ -63,8 +77,12 @@ public class AddrCodeGen extends CodeGen {
             }
             case ValueAtExpr vae -> {
                 Section currSection = asmProg.getCurrentSection();
+                
+                currSection.emit("getting address of the pointer");
                 Register addr = visit(vae.expr);
                 Register addrPointedTo = Register.Virtual.create();
+                
+                currSection.emit("get the address pointed to");
                 currSection.emit(OpCode.LW, addrPointedTo, addr, 0);
                 yield addrPointedTo;
             }

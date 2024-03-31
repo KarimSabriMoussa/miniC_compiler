@@ -44,9 +44,15 @@ public class StmtCodeGen extends CodeGen {
                 Label elseLabel = Label.create("elseLabel");
                 Label endLabel = Label.create("endLabel");
 
+
+
+                currSection.emit("check if condition is true, branch to else if false");
                 currSection.emit(OpCode.BEQ, condition, Register.Arch.zero, elseLabel);
                 visit(i.stmt);
+                
                 currSection.emit(OpCode.B, endLabel);
+                
+                currSection.emit("else branch");
                 currSection.emit(elseLabel);
                 if (i.elseStmt != null) {
                     visit(i.elseStmt);
@@ -68,8 +74,13 @@ public class StmtCodeGen extends CodeGen {
 
                 currSection.emit(loop);
                 condition = (new ExprCodeGen(asmProg)).visit(w.condition);
+
+                
+                currSection.emit("check if condition is true, branch to end if false");
                 currSection.emit(OpCode.BEQ, condition, Register.Arch.zero, endLabel);
                 visit(w.stmt);
+                
+                currSection.emit("branch to start of loop to check condition");
                 currSection.emit(OpCode.B, loop);
                 currSection.emit(endLabel);
 
@@ -82,8 +93,12 @@ public class StmtCodeGen extends CodeGen {
                 Section currSection = asmProg.getCurrentSection();
 
                 if (r.expr != null) {
-                    Register returnValueRegister = ((new ExprCodeGen(asmProg))).visit(r.expr);
 
+                    
+                    currSection.emit("computing the return value");
+                    Register returnValueRegister = ((new ExprCodeGen(asmProg))).visit(r.expr);
+                    
+                    currSection.emit("copying the return value into the previous frame");
                     switch (r.fd.type) {
                         case BaseType.INT -> {
                             currSection.emit(OpCode.SW, returnValueRegister, Register.Arch.fp,
@@ -114,6 +129,7 @@ public class StmtCodeGen extends CodeGen {
                     }
                 }
 
+                currSection.emit("jumping to the return label");
                 currSection.emit(OpCode.J,r.fd.returnLabel);
 
             }
