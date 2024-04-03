@@ -137,6 +137,7 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 					yield matchFunCallToFunDecl(fce, fce.fd);
 				}
 
+				error("function declaration missing");
 				yield BaseType.UNKNOWN;
 			}
 
@@ -175,6 +176,7 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 					case StructType st -> {
 						std = structs.get(st.name);
 						if (std == null) {
+							error("struct decleration missing");
 							yield BaseType.UNKNOWN;
 						}
 
@@ -222,7 +224,6 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 			}
 
 			case SizeOfExpr soe -> {
-
 				soe.type = BaseType.INT;
 				yield soe.type;
 			}
@@ -295,6 +296,7 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 					yield v.type;
 				}
 
+				error("variable declaration missing");
 				yield BaseType.UNKNOWN;
 			}
 
@@ -372,7 +374,7 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 			}
 
 			case Decl d -> {
-				yield BaseType.UNKNOWN;
+				yield BaseType.NONE;
 			}
 
 			case Stmt s -> {

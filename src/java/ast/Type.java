@@ -3,21 +3,28 @@ package ast;
 public sealed interface Type extends ASTNode
                 permits BaseType, StructType, PointerType, ArrayType {
 
+        public static void error() {
+                throw new IllegalStateException();
+        }
+
         public static boolean equals(Type t1, Type t2) {
                 return switch (t1) {
                         case null -> {
+                                error();
                                 yield false;
-                        } 
+                        }
                         case ArrayType at1 -> {
                                 yield switch (t2) {
                                         case ArrayType at2 -> {
                                                 if (at1.arraySize == at2.arraySize) {
                                                         yield Type.equals(at1.type, at2.type);
                                                 } else {
+                                                        error();
                                                         yield false;
                                                 }
                                         }
                                         case null, default -> {
+                                                error();
                                                 yield false;
                                         }
                                 };
@@ -28,6 +35,7 @@ public sealed interface Type extends ASTNode
                                                 yield Type.equals(pt1.type, pt2.type);
                                         }
                                         case null, default -> {
+                                                error();
                                                 yield false;
                                         }
                                 };
@@ -35,9 +43,10 @@ public sealed interface Type extends ASTNode
                         case StructType st1 -> {
                                 yield switch (t2) {
                                         case StructType st2 -> {
-                                                yield st1.name != null && st1.name.equals(st2.name);
+                                                yield st1.std != null && st1.std.equals(st2.std);
                                         }
                                         case null, default -> {
+                                                error();
                                                 yield false;
                                         }
                                 };
@@ -48,6 +57,7 @@ public sealed interface Type extends ASTNode
                                                 yield bt1.equals(bt2);
                                         }
                                         case null, default -> {
+                                                error();
                                                 yield false;
                                         }
                                 };
