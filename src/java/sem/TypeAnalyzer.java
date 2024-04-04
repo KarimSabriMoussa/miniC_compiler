@@ -159,48 +159,6 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 					}
 				}
 
-				if (indexType == BaseType.CHAR) {
-					error("invalid array access");
-					yield BaseType.UNKNOWN;
-				}
-
-				if (indexType == BaseType.VOID) {
-					error("invalid array access");
-					yield BaseType.UNKNOWN;
-				}
-
-				if (indexType == BaseType.NONE) {
-					error("invalid array access");
-					yield BaseType.UNKNOWN;
-				}
-
-				if (indexType == BaseType.UNKNOWN) {
-					error("invalid array access");
-					yield BaseType.UNKNOWN;
-				}
-
-				switch (indexType) {
-					case ArrayType at -> {
-
-						error("invalid array access");
-						yield BaseType.UNKNOWN;
-					}
-					case StructType st -> {
-
-						error("invalid array access");
-						yield BaseType.UNKNOWN;
-					}
-					case PointerType pt -> {
-
-						error("invalid array access");
-						yield BaseType.UNKNOWN;
-					}
-
-					default -> {
-
-					}
-				}
-
 				if (indexType != BaseType.INT) {
 					error("invalid array access");
 					yield BaseType.UNKNOWN;

@@ -38,6 +38,9 @@ public class FunAnalyzer extends BaseSemanticAnalyzer {
             }
             case FunCallExpr fce -> {
                 calls.add(fce);
+                for (ASTNode child : fce.children()) {
+                    visit(child);
+                }
             }
             case Return r -> {
                 r.fd = currDecl;
