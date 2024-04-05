@@ -31,8 +31,7 @@ public class ExprCodeGen extends CodeGen {
             case Assign a -> {
 
                 Section currSection = asmProg.getCurrentSection();
-
-                currSection.emit("get address of variable");
+ 
                 Register addr = (new AddrCodeGen(asmProg)).visit(a.variable);
 
                 currSection.emit("get value to assign");

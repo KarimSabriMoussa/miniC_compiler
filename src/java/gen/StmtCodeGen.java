@@ -129,8 +129,8 @@ public class StmtCodeGen extends CodeGen {
                     }
                 }
 
-                currSection.emit("jumping to the return label");
-                currSection.emit(OpCode.J,r.fd.returnLabel);
+                currSection.emit("branching to the return label");
+                currSection.emit(OpCode.B,r.fd.returnLabel);
 
             }
         }

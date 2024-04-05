@@ -23,7 +23,7 @@ public class AddrCodeGen extends CodeGen {
                 Section currSection = asmProg.getCurrentSection();
                 Register addr = Register.Virtual.create();
 
-                currSection.emit("get address of the variable");
+                currSection.emit("get address of variable");
 
                 if (ve.vd.globalLabel != null) {
                     currSection.emit(OpCode.LA, addr, ve.vd.globalLabel);
