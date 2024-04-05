@@ -1,0 +1,3 @@
+.data
+.align 2
+
