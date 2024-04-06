@@ -53,8 +53,6 @@ public final class GraphColouringRegAlloc implements AssemblyPass {
 
                     InterferenceGraph interferenceGraph = constructInterferenceGraph(controlFlowGraph);
 
-                    outputDotGraph(interferenceGraph.toDotFormat());
-
                     vrToAr = mapVirtualToArchReg(interferenceGraph, controlFlowGraph);
 
                     spilledRegToLabel = mapSpilledRegToLabel(interferenceGraph);
