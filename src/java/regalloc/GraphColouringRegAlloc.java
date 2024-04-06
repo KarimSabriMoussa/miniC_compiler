@@ -149,7 +149,7 @@ public final class GraphColouringRegAlloc implements AssemblyPass {
         List<Virtual> registers = new ArrayList<>();
         for (Node node : controlFlowGraph.getNodes()) {
             Register def = node.getInsn().def();
-            if (def != null && def.isVirtual()) {
+            if (def != null && def.isVirtual() && !registers.contains(def)) {
                 registers.add((Virtual) def);
             }
         }
