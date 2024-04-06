@@ -70,8 +70,6 @@ public final class GraphColouringRegAlloc implements AssemblyPass {
 
                     List<Register.Virtual> registersToPush = new ArrayList<Register.Virtual>();
 
-                    int nodeId = 0;
-
                     for (AssemblyItem item : section.items) {
                         switch (item) {
                             case Comment comment -> textSection.emit(comment);
@@ -135,7 +133,6 @@ public final class GraphColouringRegAlloc implements AssemblyPass {
                                             spilledRegToLabel, textSection);
                                 }
 
-                                nodeId++;
                             }
                         }
                     }
@@ -427,7 +424,7 @@ public final class GraphColouringRegAlloc implements AssemblyPass {
         Stack<RegisterNode> stack = new Stack<RegisterNode>();
         List<RegisterNode> spilledRegisters = new ArrayList<RegisterNode>();
 
-        while (registerNodes.size() > stack.size()) {
+        while (registerNodes.size() > (stack.size() + spilledRegisters.size())) {
             RegisterNode vertex = getVertexWithDegreeLessK(registerNodes, stack, spilledRegisters,
                     archRegisters.size());
 
@@ -486,8 +483,12 @@ public final class GraphColouringRegAlloc implements AssemblyPass {
             if (neighbours.size() > maxDegree) {
                 nodeToSpill = node;
                 maxDegree = neighbours.size();
-            } else if (neighbours.size() == maxDegree && nodeToSpill != null) {
-                if (getNumberOfUses(node, controlFlowGraph) < getNumberOfUses(nodeToSpill, controlFlowGraph)) {
+            } else if (neighbours.size() == maxDegree) {
+                if (nodeToSpill != null) {
+                    if (getNumberOfUses(node, controlFlowGraph) < getNumberOfUses(nodeToSpill, controlFlowGraph)) {
+                        nodeToSpill = node;
+                    }
+                } else {
                     nodeToSpill = node;
                 }
             }
