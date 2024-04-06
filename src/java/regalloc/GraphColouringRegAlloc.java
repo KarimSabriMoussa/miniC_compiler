@@ -68,7 +68,8 @@ public final class GraphColouringRegAlloc implements AssemblyPass {
 
                     final Section textSection = newProg.newSection(AssemblyProgram.Section.Type.TEXT);
 
-                    List<Register.Virtual> registersToPush = new ArrayList<Register.Virtual>();
+                    List<Register> registersToPush = new ArrayList<Register>();
+                    List<Register> spilledRegisters = new ArrayList<Register>();
 
                     for (AssemblyItem item : section.items) {
                         switch (item) {
@@ -79,54 +80,45 @@ public final class GraphColouringRegAlloc implements AssemblyPass {
                                 if (insn == Instruction.Nullary.pushRegisters) {
                                     textSection.emit("Original instruction: pushRegisters");
 
-                                    registersToPush = getModifiedRegisters(controlFlowGraph);
+                                    registersToPush = getModifiedRegisters(controlFlowGraph, vrToAr);
 
-                                    for (Register reg : registersToPush) {
+                                    spilledRegisters = interferenceGraph.getSpilledRegisters()
+                                            .stream()
+                                            .map(RegisterNode::getVirtualRegister)
+                                            .collect(Collectors.toList());
 
-                                        List<Register> spilledRegisters = interferenceGraph.getSpilledRegisters()
-                                                .stream()
-                                                .map(RegisterNode::getVirtualRegister)
-                                                .collect(Collectors.toList());
+                                    for (Register archReg : registersToPush) {
+                                        textSection.emit(OpCode.ADDI, Register.Arch.sp, Register.Arch.sp, -4);
+                                        textSection.emit(OpCode.SW, archReg, Register.Arch.sp, 0);
+                                    }
 
-                                        if (spilledRegisters.contains(reg)) {
-                                            Label l = spilledRegToLabel.get(reg);
-                                            textSection.emit(OpCode.LA, Register.Arch.s6, l);
-                                            textSection.emit(OpCode.LW, Register.Arch.s6, Register.Arch.s6, 0);
+                                    for (Register spilledReg : spilledRegisters) {
+                                        Label l = spilledRegToLabel.get(spilledReg);
+                                        textSection.emit(OpCode.LA, Register.Arch.s6, l);
+                                        textSection.emit(OpCode.LW, Register.Arch.s6, Register.Arch.s6, 0);
 
-                                            textSection.emit(OpCode.ADDI, Register.Arch.sp, Register.Arch.sp, -4);
-                                            textSection.emit(OpCode.SW, Register.Arch.s6, Register.Arch.sp, 0);
-                                        } else {
-                                            Register arch = vrToAr.get(reg);
-                                            textSection.emit(OpCode.ADDI, Register.Arch.sp, Register.Arch.sp, -4);
-                                            textSection.emit(OpCode.SW, arch, Register.Arch.sp, 0);
-                                        }
-
+                                        textSection.emit(OpCode.ADDI, Register.Arch.sp, Register.Arch.sp, -4);
+                                        textSection.emit(OpCode.SW, Register.Arch.s6, Register.Arch.sp, 0);
                                     }
 
                                 } else if (insn == Instruction.Nullary.popRegisters) {
                                     textSection.emit("Original instruction: popRegisters");
-                                    List<Register.Virtual> registersToPop = registersToPush.reversed();
+                                    List<Register> registersToPop = registersToPush.reversed();
+                                    List<Register> reversedSpilledRegisters = spilledRegisters.reversed();
 
-                                    for (Register reg : registersToPop) {
+                                    for (Register spilledReg : reversedSpilledRegisters) {
+                                        Label l = spilledRegToLabel.get(spilledReg);
 
-                                        List<Register> spilledRegisters = interferenceGraph.getSpilledRegisters()
-                                                .stream()
-                                                .map(RegisterNode::getVirtualRegister)
-                                                .collect(Collectors.toList());
+                                        textSection.emit(OpCode.LW, Register.Arch.s6, Register.Arch.sp, 0);
+                                        textSection.emit(OpCode.ADDI, Register.Arch.sp, Register.Arch.sp, 4);
 
-                                        if (spilledRegisters.contains(reg)) {
-                                            Label l = spilledRegToLabel.get(reg);
+                                        textSection.emit(OpCode.LA, Register.Arch.s7, l);
+                                        textSection.emit(OpCode.SW, Register.Arch.s6, Register.Arch.s7, 0);
+                                    }
 
-                                            textSection.emit(OpCode.LW, Register.Arch.s6, Register.Arch.sp, 0);
-                                            textSection.emit(OpCode.ADDI, Register.Arch.sp, Register.Arch.sp, 4);
-
-                                            textSection.emit(OpCode.LA, Register.Arch.s7, l);
-                                            textSection.emit(OpCode.SW, Register.Arch.s6, Register.Arch.s7, 0);
-                                        } else {
-                                            Register arch = vrToAr.get(reg);
-                                            textSection.emit(OpCode.LW, arch, Register.Arch.sp, 0);
-                                            textSection.emit(OpCode.ADDI, Register.Arch.sp, Register.Arch.sp, 4);
-                                        }
+                                    for (Register archReg : registersToPop) {
+                                        textSection.emit(OpCode.LW, archReg, Register.Arch.sp, 0);
+                                        textSection.emit(OpCode.ADDI, Register.Arch.sp, Register.Arch.sp, 4);
                                     }
                                 } else {
                                     emitInstructionWithoutVirtualRegister(interferenceGraph, insn, vrToAr,
@@ -144,13 +136,16 @@ public final class GraphColouringRegAlloc implements AssemblyPass {
         return newProg;
     }
 
-    private List<Virtual> getModifiedRegisters(ControlFlowGraph controlFlowGraph) {
+    private List<Register> getModifiedRegisters(ControlFlowGraph controlFlowGraph, Map<Register, Register> vrToAr) {
 
-        List<Virtual> registers = new ArrayList<>();
+        List<Register> registers = new ArrayList<>();
         for (Node node : controlFlowGraph.getNodes()) {
             Register def = node.getInsn().def();
-            if (def != null && def.isVirtual() && !registers.contains(def)) {
-                registers.add((Virtual) def);
+            if (def != null && def.isVirtual()) {
+                Register archRegister = vrToAr.get(def);
+                if (!registers.contains(archRegister)) {
+                    registers.add(archRegister);
+                }
             }
         }
 
