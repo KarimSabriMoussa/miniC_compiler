@@ -1,9 +1,11 @@
-void main(){
+void main()
+{
 
-    int arr[10];
+    char a;
+    int b;
+    char c;
 
-    arr[0] = 1;
-
-    print_i(arr[0]);
-
+    a= 'a';
+    b = 1;
+    c = 'c';
 }

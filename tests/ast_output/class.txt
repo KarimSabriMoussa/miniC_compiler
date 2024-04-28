@@ -1,0 +1,3 @@
+Program(ClassDecl(ClassType(Course),VarDecl(ArrayType(CHAR,20),name),VarDecl(INT,credit),VarDecl(INT,courseWorkScore),FunDecl(VOID,whereToAttend,Block(ExprStmt(FunCallExpr(print_s,TypecastExpr(PointerType(CHAR),StrLiteral(Not determined! The course will be held virtually or in person!
+)))))),FunDecl(INT,hasExam,Block(If(BinOp(VarExpr(courseWorkScore),EQ,IntLiteral(100)),Return(IntLiteral(0)),Return(IntLiteral(1)))))),ClassDecl(ClassType(VirtualCourse),ClassType(Course),VarDecl(ArrayType(CHAR,200),zoomLink),VarDecl(INT,isOnZoom),FunDecl(VOID,whereToAttend,Block(ExprStmt(FunCallExpr(print_s,TypecastExpr(PointerType(CHAR),StrLiteral(The course is going to be held on Zoom!
+))))))))

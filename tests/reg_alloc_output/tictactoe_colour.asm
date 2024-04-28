@@ -135,56 +135,6 @@ addi $sp,$sp,-4
 sw $t0,0($sp)
 addi $sp,$sp,-4
 sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
 # get address of variable
 # Original instruction: la v0,label_27_a11
 la $t0,label_27_a11
@@ -308,56 +258,6 @@ label_38_return:
 # Original instruction: popRegisters
 lw $t1,0($sp)
 addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
 lw $t0,0($sp)
 addi $sp,$sp,4
 # setting the sp to the top of the old frame
@@ -397,217 +297,7 @@ sw $t0,0($sp)
 addi $sp,$sp,-4
 sw $t1,0($sp)
 addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
 sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
 # get address of variable
 # Original instruction: addiu v27,$fp,-8
 addiu $t0,$fp,-8
@@ -640,7 +330,7 @@ sltu $t0,$zero,$t0
 beq $t0,$zero,label_41_elseLabel
 # get address of variable
 # Original instruction: addiu v34,$fp,-8
-addiu $t2,$fp,-8
+addiu $t1,$fp,-8
 # get value to assign
 # compute the left operand
 # get address of the variable
@@ -648,15 +338,15 @@ addiu $t2,$fp,-8
 # Original instruction: addiu v36,$fp,-8
 addiu $t0,$fp,-8
 # Original instruction: lw v37,0(v36)
-lw $t1,0($t0)
+lw $t0,0($t0)
 # compute the right operand
 # Original instruction: li v38,1
-li $t0,1
+li $t2,1
 # Original instruction: add v35,v37,v38
-add $t0,$t1,$t0
+add $t0,$t0,$t2
 # assign value to variable address
 # Original instruction: sw v35,0(v34)
-sw $t0,0($t2)
+sw $t0,0($t1)
 # Original instruction: b label_42_endLabel
 b label_42_endLabel
 # else branch
@@ -685,23 +375,23 @@ sltu $t0,$zero,$t0
 beq $t0,$zero,label_43_elseLabel
 # get address of variable
 # Original instruction: addiu v44,$fp,-8
-addiu $t1,$fp,-8
+addiu $t0,$fp,-8
 # get value to assign
 # compute the left operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v46,$fp,-8
-addiu $t0,$fp,-8
+addiu $t1,$fp,-8
 # Original instruction: lw v47,0(v46)
-lw $t0,0($t0)
+lw $t2,0($t1)
 # compute the right operand
 # Original instruction: li v48,1
-li $t2,1
+li $t1,1
 # Original instruction: add v45,v47,v48
-add $t0,$t0,$t2
+add $t1,$t2,$t1
 # assign value to variable address
 # Original instruction: sw v45,0(v44)
-sw $t0,0($t1)
+sw $t1,0($t0)
 # Original instruction: b label_44_endLabel
 b label_44_endLabel
 # else branch
@@ -713,16 +403,16 @@ label_44_endLabel:
 # Original instruction: la v50,label_33_a31
 la $t0,label_33_a31
 # Original instruction: lb v51,0(v50)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: la v52,label_36_empty
-la $t1,label_36_empty
+la $t0,label_36_empty
 # Original instruction: lb v53,0(v52)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v49,v51,v53
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltu v49,$zero,v49
 sltu $t0,$zero,$t0
 # check if condition is true, branch to else if false
@@ -730,23 +420,23 @@ sltu $t0,$zero,$t0
 beq $t0,$zero,label_45_elseLabel
 # get address of variable
 # Original instruction: addiu v54,$fp,-8
-addiu $t0,$fp,-8
+addiu $t2,$fp,-8
 # get value to assign
 # compute the left operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v56,$fp,-8
-addiu $t1,$fp,-8
+addiu $t0,$fp,-8
 # Original instruction: lw v57,0(v56)
-lw $t1,0($t1)
+lw $t1,0($t0)
 # compute the right operand
 # Original instruction: li v58,1
-li $t2,1
+li $t0,1
 # Original instruction: add v55,v57,v58
-add $t1,$t1,$t2
+add $t0,$t1,$t0
 # assign value to variable address
 # Original instruction: sw v55,0(v54)
-sw $t1,0($t0)
+sw $t0,0($t2)
 # Original instruction: b label_46_endLabel
 b label_46_endLabel
 # else branch
@@ -775,23 +465,23 @@ sltu $t0,$zero,$t0
 beq $t0,$zero,label_47_elseLabel
 # get address of variable
 # Original instruction: addiu v64,$fp,-8
-addiu $t1,$fp,-8
+addiu $t0,$fp,-8
 # get value to assign
 # compute the left operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v66,$fp,-8
-addiu $t0,$fp,-8
+addiu $t1,$fp,-8
 # Original instruction: lw v67,0(v66)
-lw $t0,0($t0)
+lw $t1,0($t1)
 # compute the right operand
 # Original instruction: li v68,1
 li $t2,1
 # Original instruction: add v65,v67,v68
-add $t0,$t0,$t2
+add $t1,$t1,$t2
 # assign value to variable address
 # Original instruction: sw v65,0(v64)
-sw $t0,0($t1)
+sw $t1,0($t0)
 # Original instruction: b label_48_endLabel
 b label_48_endLabel
 # else branch
@@ -803,16 +493,16 @@ label_48_endLabel:
 # Original instruction: la v70,label_31_a22
 la $t0,label_31_a22
 # Original instruction: lb v71,0(v70)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: la v72,label_36_empty
-la $t1,label_36_empty
+la $t0,label_36_empty
 # Original instruction: lb v73,0(v72)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v69,v71,v73
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltu v69,$zero,v69
 sltu $t0,$zero,$t0
 # check if condition is true, branch to else if false
@@ -828,12 +518,12 @@ addiu $t1,$fp,-8
 # Original instruction: addiu v76,$fp,-8
 addiu $t0,$fp,-8
 # Original instruction: lw v77,0(v76)
-lw $t2,0($t0)
+lw $t0,0($t0)
 # compute the right operand
 # Original instruction: li v78,1
-li $t0,1
+li $t2,1
 # Original instruction: add v75,v77,v78
-add $t0,$t2,$t0
+add $t0,$t0,$t2
 # assign value to variable address
 # Original instruction: sw v75,0(v74)
 sw $t0,0($t1)
@@ -848,16 +538,16 @@ label_50_endLabel:
 # Original instruction: la v80,label_34_a32
 la $t0,label_34_a32
 # Original instruction: lb v81,0(v80)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: la v82,label_36_empty
-la $t1,label_36_empty
+la $t0,label_36_empty
 # Original instruction: lb v83,0(v82)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v79,v81,v83
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltu v79,$zero,v79
 sltu $t0,$zero,$t0
 # check if condition is true, branch to else if false
@@ -865,7 +555,7 @@ sltu $t0,$zero,$t0
 beq $t0,$zero,label_51_elseLabel
 # get address of variable
 # Original instruction: addiu v84,$fp,-8
-addiu $t2,$fp,-8
+addiu $t1,$fp,-8
 # get value to assign
 # compute the left operand
 # get address of the variable
@@ -873,15 +563,15 @@ addiu $t2,$fp,-8
 # Original instruction: addiu v86,$fp,-8
 addiu $t0,$fp,-8
 # Original instruction: lw v87,0(v86)
-lw $t1,0($t0)
+lw $t2,0($t0)
 # compute the right operand
 # Original instruction: li v88,1
 li $t0,1
 # Original instruction: add v85,v87,v88
-add $t0,$t1,$t0
+add $t0,$t2,$t0
 # assign value to variable address
 # Original instruction: sw v85,0(v84)
-sw $t0,0($t2)
+sw $t0,0($t1)
 # Original instruction: b label_52_endLabel
 b label_52_endLabel
 # else branch
@@ -893,16 +583,16 @@ label_52_endLabel:
 # Original instruction: la v90,label_29_a13
 la $t0,label_29_a13
 # Original instruction: lb v91,0(v90)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: la v92,label_36_empty
-la $t1,label_36_empty
+la $t0,label_36_empty
 # Original instruction: lb v93,0(v92)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v89,v91,v93
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltu v89,$zero,v89
 sltu $t0,$zero,$t0
 # check if condition is true, branch to else if false
@@ -910,23 +600,23 @@ sltu $t0,$zero,$t0
 beq $t0,$zero,label_53_elseLabel
 # get address of variable
 # Original instruction: addiu v94,$fp,-8
-addiu $t0,$fp,-8
+addiu $t1,$fp,-8
 # get value to assign
 # compute the left operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v96,$fp,-8
-addiu $t1,$fp,-8
+addiu $t0,$fp,-8
 # Original instruction: lw v97,0(v96)
-lw $t1,0($t1)
+lw $t0,0($t0)
 # compute the right operand
 # Original instruction: li v98,1
 li $t2,1
 # Original instruction: add v95,v97,v98
-add $t1,$t1,$t2
+add $t0,$t0,$t2
 # assign value to variable address
 # Original instruction: sw v95,0(v94)
-sw $t1,0($t0)
+sw $t0,0($t1)
 # Original instruction: b label_54_endLabel
 b label_54_endLabel
 # else branch
@@ -955,7 +645,7 @@ sltu $t0,$zero,$t0
 beq $t0,$zero,label_55_elseLabel
 # get address of variable
 # Original instruction: addiu v104,$fp,-8
-addiu $t2,$fp,-8
+addiu $t1,$fp,-8
 # get value to assign
 # compute the left operand
 # get address of the variable
@@ -963,15 +653,15 @@ addiu $t2,$fp,-8
 # Original instruction: addiu v106,$fp,-8
 addiu $t0,$fp,-8
 # Original instruction: lw v107,0(v106)
-lw $t1,0($t0)
+lw $t2,0($t0)
 # compute the right operand
 # Original instruction: li v108,1
 li $t0,1
 # Original instruction: add v105,v107,v108
-add $t0,$t1,$t0
+add $t0,$t2,$t0
 # assign value to variable address
 # Original instruction: sw v105,0(v104)
-sw $t0,0($t2)
+sw $t0,0($t1)
 # Original instruction: b label_56_endLabel
 b label_56_endLabel
 # else branch
@@ -1066,217 +756,7 @@ label_60_endLabel:
 label_40_return:
 # popping all used registers from the stack
 # Original instruction: popRegisters
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
 lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
 addi $sp,$sp,4
 lw $t1,0($sp)
 addi $sp,$sp,4
@@ -1319,379 +799,7 @@ sw $t0,0($sp)
 addi $sp,$sp,-4
 sw $t1,0($sp)
 addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
 sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
 # get address of variable
 # Original instruction: addiu v125,$fp,-8
 addiu $t0,$fp,-8
@@ -1775,19 +883,19 @@ b label_68_endLabel
 label_67_elseLabel:
 # get address of variable
 # Original instruction: addiu v143,$fp,-8
-addiu $t1,$fp,-8
+addiu $t2,$fp,-8
 # get value to assign
 # compute the left operand
 # Original instruction: li v145,0
 li $t0,0
 # compute the right operand
 # Original instruction: li v146,1
-li $t2,1
+li $t1,1
 # Original instruction: sub v144,v145,v146
-sub $t0,$t0,$t2
+sub $t0,$t0,$t1
 # assign value to variable address
 # Original instruction: sw v144,0(v143)
-sw $t0,0($t1)
+sw $t0,0($t2)
 label_68_endLabel:
 # Original instruction: b label_66_endLabel
 b label_66_endLabel
@@ -1799,12 +907,12 @@ label_65_elseLabel:
 # Original instruction: addiu v148,$fp,12
 addiu $t0,$fp,12
 # Original instruction: lw v149,0(v148)
-lw $t1,0($t0)
+lw $t0,0($t0)
 # compute the right operand
 # Original instruction: li v150,2
-li $t0,2
+li $t1,2
 # Original instruction: xor v147,v149,v150
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v147,v147,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -1833,36 +941,36 @@ sltiu $t0,$t0,1
 beq $t0,$zero,label_71_elseLabel
 # get address of variable
 # Original instruction: la v156,label_28_a12
-la $t0,label_28_a12
+la $t1,label_28_a12
 # get value to assign
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v157,$fp,8
-addiu $t1,$fp,8
+addiu $t0,$fp,8
 # Original instruction: lb v158,0(v157)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # assign value to variable address
 # Original instruction: sb v158,0(v156)
-sb $t1,0($t0)
+sb $t0,0($t1)
 # Original instruction: b label_72_endLabel
 b label_72_endLabel
 # else branch
 label_71_elseLabel:
 # get address of variable
 # Original instruction: addiu v159,$fp,-8
-addiu $t0,$fp,-8
+addiu $t1,$fp,-8
 # get value to assign
 # compute the left operand
 # Original instruction: li v161,0
-li $t1,0
+li $t0,0
 # compute the right operand
 # Original instruction: li v162,1
 li $t2,1
 # Original instruction: sub v160,v161,v162
-sub $t1,$t1,$t2
+sub $t0,$t0,$t2
 # assign value to variable address
 # Original instruction: sw v160,0(v159)
-sw $t1,0($t0)
+sw $t0,0($t1)
 label_72_endLabel:
 # Original instruction: b label_70_endLabel
 b label_70_endLabel
@@ -1874,12 +982,12 @@ label_69_elseLabel:
 # Original instruction: addiu v164,$fp,12
 addiu $t0,$fp,12
 # Original instruction: lw v165,0(v164)
-lw $t0,0($t0)
+lw $t1,0($t0)
 # compute the right operand
 # Original instruction: li v166,3
-li $t1,3
+li $t0,3
 # Original instruction: xor v163,v165,v166
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v163,v163,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -1891,16 +999,16 @@ beq $t0,$zero,label_73_elseLabel
 # Original instruction: la v168,label_29_a13
 la $t0,label_29_a13
 # Original instruction: lb v169,0(v168)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: la v170,label_36_empty
-la $t1,label_36_empty
+la $t0,label_36_empty
 # Original instruction: lb v171,0(v170)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v167,v169,v171
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v167,v167,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -1925,19 +1033,19 @@ b label_76_endLabel
 label_75_elseLabel:
 # get address of variable
 # Original instruction: addiu v175,$fp,-8
-addiu $t0,$fp,-8
+addiu $t2,$fp,-8
 # get value to assign
 # compute the left operand
 # Original instruction: li v177,0
-li $t2,0
+li $t0,0
 # compute the right operand
 # Original instruction: li v178,1
 li $t1,1
 # Original instruction: sub v176,v177,v178
-sub $t1,$t2,$t1
+sub $t0,$t0,$t1
 # assign value to variable address
 # Original instruction: sw v176,0(v175)
-sw $t1,0($t0)
+sw $t0,0($t2)
 label_76_endLabel:
 # Original instruction: b label_74_endLabel
 b label_74_endLabel
@@ -1945,13 +1053,13 @@ b label_74_endLabel
 label_73_elseLabel:
 # get address of variable
 # Original instruction: addiu v179,$fp,-8
-addiu $t1,$fp,-8
+addiu $t0,$fp,-8
 # get value to assign
 # Original instruction: li v180,0
-li $t0,0
+li $t1,0
 # assign value to variable address
 # Original instruction: sw v180,0(v179)
-sw $t0,0($t1)
+sw $t1,0($t0)
 label_74_endLabel:
 label_70_endLabel:
 label_66_endLabel:
@@ -1999,16 +1107,16 @@ beq $t0,$zero,label_79_elseLabel
 # Original instruction: la v190,label_30_a21
 la $t0,label_30_a21
 # Original instruction: lb v191,0(v190)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: la v192,label_36_empty
-la $t1,label_36_empty
+la $t0,label_36_empty
 # Original instruction: lb v193,0(v192)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v189,v191,v193
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v189,v189,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -2057,12 +1165,12 @@ label_79_elseLabel:
 # Original instruction: addiu v202,$fp,12
 addiu $t0,$fp,12
 # Original instruction: lw v203,0(v202)
-lw $t0,0($t0)
+lw $t1,0($t0)
 # compute the right operand
 # Original instruction: li v204,2
-li $t1,2
+li $t0,2
 # Original instruction: xor v201,v203,v204
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v201,v201,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -2074,16 +1182,16 @@ beq $t0,$zero,label_83_elseLabel
 # Original instruction: la v206,label_31_a22
 la $t0,label_31_a22
 # Original instruction: lb v207,0(v206)
-lb $t1,0($t0)
+lb $t0,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: la v208,label_36_empty
-la $t0,label_36_empty
+la $t1,label_36_empty
 # Original instruction: lb v209,0(v208)
-lb $t0,0($t0)
+lb $t1,0($t1)
 # Original instruction: xor v205,v207,v209
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v205,v205,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -2112,12 +1220,12 @@ addiu $t1,$fp,-8
 # get value to assign
 # compute the left operand
 # Original instruction: li v215,0
-li $t2,0
+li $t0,0
 # compute the right operand
 # Original instruction: li v216,1
-li $t0,1
+li $t2,1
 # Original instruction: sub v214,v215,v216
-sub $t0,$t2,$t0
+sub $t0,$t0,$t2
 # assign value to variable address
 # Original instruction: sw v214,0(v213)
 sw $t0,0($t1)
@@ -2132,12 +1240,12 @@ label_83_elseLabel:
 # Original instruction: addiu v218,$fp,12
 addiu $t0,$fp,12
 # Original instruction: lw v219,0(v218)
-lw $t1,0($t0)
+lw $t0,0($t0)
 # compute the right operand
 # Original instruction: li v220,3
-li $t0,3
+li $t1,3
 # Original instruction: xor v217,v219,v220
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v217,v217,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -2166,36 +1274,36 @@ sltiu $t0,$t0,1
 beq $t0,$zero,label_89_elseLabel
 # get address of variable
 # Original instruction: la v226,label_32_a23
-la $t1,label_32_a23
+la $t0,label_32_a23
 # get value to assign
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v227,$fp,8
-addiu $t0,$fp,8
+addiu $t1,$fp,8
 # Original instruction: lb v228,0(v227)
-lb $t0,0($t0)
+lb $t1,0($t1)
 # assign value to variable address
 # Original instruction: sb v228,0(v226)
-sb $t0,0($t1)
+sb $t1,0($t0)
 # Original instruction: b label_90_endLabel
 b label_90_endLabel
 # else branch
 label_89_elseLabel:
 # get address of variable
 # Original instruction: addiu v229,$fp,-8
-addiu $t0,$fp,-8
+addiu $t1,$fp,-8
 # get value to assign
 # compute the left operand
 # Original instruction: li v231,0
-li $t2,0
+li $t0,0
 # compute the right operand
 # Original instruction: li v232,1
-li $t1,1
+li $t2,1
 # Original instruction: sub v230,v231,v232
-sub $t1,$t2,$t1
+sub $t0,$t0,$t2
 # assign value to variable address
 # Original instruction: sw v230,0(v229)
-sw $t1,0($t0)
+sw $t0,0($t1)
 label_90_endLabel:
 # Original instruction: b label_88_endLabel
 b label_88_endLabel
@@ -2203,13 +1311,13 @@ b label_88_endLabel
 label_87_elseLabel:
 # get address of variable
 # Original instruction: addiu v233,$fp,-8
-addiu $t0,$fp,-8
+addiu $t1,$fp,-8
 # get value to assign
 # Original instruction: li v234,0
-li $t1,0
+li $t0,0
 # assign value to variable address
 # Original instruction: sw v234,0(v233)
-sw $t1,0($t0)
+sw $t0,0($t1)
 label_88_endLabel:
 label_84_endLabel:
 label_80_endLabel:
@@ -2223,12 +1331,12 @@ label_77_elseLabel:
 # Original instruction: addiu v236,$fp,16
 addiu $t0,$fp,16
 # Original instruction: lb v237,0(v236)
-lb $t1,0($t0)
+lb $t0,0($t0)
 # compute the right operand
 # Original instruction: li v238,99
-li $t0,99
+li $t1,99
 # Original instruction: xor v235,v237,v238
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v235,v235,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -2257,16 +1365,16 @@ beq $t0,$zero,label_93_elseLabel
 # Original instruction: la v244,label_33_a31
 la $t0,label_33_a31
 # Original instruction: lb v245,0(v244)
-lb $t1,0($t0)
+lb $t0,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: la v246,label_36_empty
-la $t0,label_36_empty
+la $t1,label_36_empty
 # Original instruction: lb v247,0(v246)
-lb $t0,0($t0)
+lb $t1,0($t1)
 # Original instruction: xor v243,v245,v247
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v243,v243,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -2291,19 +1399,19 @@ b label_96_endLabel
 label_95_elseLabel:
 # get address of variable
 # Original instruction: addiu v251,$fp,-8
-addiu $t0,$fp,-8
+addiu $t2,$fp,-8
 # get value to assign
 # compute the left operand
 # Original instruction: li v253,0
-li $t2,0
+li $t1,0
 # compute the right operand
 # Original instruction: li v254,1
-li $t1,1
+li $t0,1
 # Original instruction: sub v252,v253,v254
-sub $t1,$t2,$t1
+sub $t0,$t1,$t0
 # assign value to variable address
 # Original instruction: sw v252,0(v251)
-sw $t1,0($t0)
+sw $t0,0($t2)
 label_96_endLabel:
 # Original instruction: b label_94_endLabel
 b label_94_endLabel
@@ -2332,16 +1440,16 @@ beq $t0,$zero,label_97_elseLabel
 # Original instruction: la v260,label_34_a32
 la $t0,label_34_a32
 # Original instruction: lb v261,0(v260)
-lb $t1,0($t0)
+lb $t0,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: la v262,label_36_empty
-la $t0,label_36_empty
+la $t1,label_36_empty
 # Original instruction: lb v263,0(v262)
-lb $t0,0($t0)
+lb $t1,0($t1)
 # Original instruction: xor v259,v261,v263
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v259,v259,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -2349,36 +1457,36 @@ sltiu $t0,$t0,1
 beq $t0,$zero,label_99_elseLabel
 # get address of variable
 # Original instruction: la v264,label_34_a32
-la $t1,label_34_a32
+la $t0,label_34_a32
 # get value to assign
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v265,$fp,8
-addiu $t0,$fp,8
+addiu $t1,$fp,8
 # Original instruction: lb v266,0(v265)
-lb $t0,0($t0)
+lb $t1,0($t1)
 # assign value to variable address
 # Original instruction: sb v266,0(v264)
-sb $t0,0($t1)
+sb $t1,0($t0)
 # Original instruction: b label_100_endLabel
 b label_100_endLabel
 # else branch
 label_99_elseLabel:
 # get address of variable
 # Original instruction: addiu v267,$fp,-8
-addiu $t1,$fp,-8
+addiu $t2,$fp,-8
 # get value to assign
 # compute the left operand
 # Original instruction: li v269,0
-li $t2,0
+li $t0,0
 # compute the right operand
 # Original instruction: li v270,1
-li $t0,1
+li $t1,1
 # Original instruction: sub v268,v269,v270
-sub $t0,$t2,$t0
+sub $t0,$t0,$t1
 # assign value to variable address
 # Original instruction: sw v268,0(v267)
-sw $t0,0($t1)
+sw $t0,0($t2)
 label_100_endLabel:
 # Original instruction: b label_98_endLabel
 b label_98_endLabel
@@ -2424,17 +1532,17 @@ sltiu $t0,$t0,1
 beq $t0,$zero,label_103_elseLabel
 # get address of variable
 # Original instruction: la v280,label_35_a33
-la $t0,label_35_a33
+la $t1,label_35_a33
 # get value to assign
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v281,$fp,8
-addiu $t1,$fp,8
+addiu $t0,$fp,8
 # Original instruction: lb v282,0(v281)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # assign value to variable address
 # Original instruction: sb v282,0(v280)
-sb $t1,0($t0)
+sb $t0,0($t1)
 # Original instruction: b label_104_endLabel
 b label_104_endLabel
 # else branch
@@ -2445,12 +1553,12 @@ addiu $t1,$fp,-8
 # get value to assign
 # compute the left operand
 # Original instruction: li v285,0
-li $t2,0
+li $t0,0
 # compute the right operand
 # Original instruction: li v286,1
-li $t0,1
+li $t2,1
 # Original instruction: sub v284,v285,v286
-sub $t0,$t2,$t0
+sub $t0,$t0,$t2
 # assign value to variable address
 # Original instruction: sw v284,0(v283)
 sw $t0,0($t1)
@@ -2461,13 +1569,13 @@ b label_102_endLabel
 label_101_elseLabel:
 # get address of variable
 # Original instruction: addiu v287,$fp,-8
-addiu $t0,$fp,-8
+addiu $t1,$fp,-8
 # get value to assign
 # Original instruction: li v288,0
-li $t1,0
+li $t0,0
 # assign value to variable address
 # Original instruction: sw v288,0(v287)
-sw $t1,0($t0)
+sw $t0,0($t1)
 label_102_endLabel:
 label_98_endLabel:
 label_94_endLabel:
@@ -2477,13 +1585,13 @@ b label_92_endLabel
 label_91_elseLabel:
 # get address of variable
 # Original instruction: addiu v289,$fp,-8
-addiu $t1,$fp,-8
+addiu $t0,$fp,-8
 # get value to assign
 # Original instruction: li v290,0
-li $t0,0
+li $t1,0
 # assign value to variable address
 # Original instruction: sw v290,0(v289)
-sw $t0,0($t1)
+sw $t1,0($t0)
 label_92_endLabel:
 label_78_endLabel:
 label_64_endLabel:
@@ -2504,379 +1612,7 @@ b label_62_return
 label_62_return:
 # popping all used registers from the stack
 # Original instruction: popRegisters
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
 lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
 addi $sp,$sp,4
 lw $t1,0($sp)
 addi $sp,$sp,4
@@ -2914,78 +1650,6 @@ sw $ra,0($sp)
 addiu $sp,$sp,0
 # pushing all used registers onto the stack
 # Original instruction: pushRegisters
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
 addi $sp,$sp,-4
 sw $t0,0($sp)
 # Original instruction: la v293,label_0_
@@ -3254,78 +1918,6 @@ label_106_return:
 # Original instruction: popRegisters
 lw $t0,0($sp)
 addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
 # setting the sp to the top of the old frame
 # Original instruction: addiu $sp,$fp,4
 addiu $sp,$fp,4
@@ -3360,12 +1952,6 @@ addiu $sp,$sp,0
 # Original instruction: pushRegisters
 addi $sp,$sp,-4
 sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
 # Original instruction: la v330,label_19_
 la $t0,label_19_
 # Original instruction: li $v0,4
@@ -3398,12 +1984,6 @@ syscall
 label_108_return:
 # popping all used registers from the stack
 # Original instruction: popRegisters
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
 lw $t0,0($sp)
 addi $sp,$sp,4
 # setting the sp to the top of the old frame
@@ -3441,29 +2021,19 @@ addiu $sp,$sp,0
 addi $sp,$sp,-4
 sw $t0,0($sp)
 addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
 sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
 # compute the left operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v335,$fp,8
 addiu $t0,$fp,8
 # Original instruction: lw v336,0(v335)
-lw $t0,0($t0)
+lw $t1,0($t0)
 # compute the right operand
 # Original instruction: li v337,1
-li $t1,1
+li $t0,1
 # Original instruction: xor v334,v336,v337
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v334,v334,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -3496,17 +2066,7 @@ label_112_endLabel:
 label_110_return:
 # popping all used registers from the stack
 # Original instruction: popRegisters
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
 lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
 addi $sp,$sp,4
 lw $t0,0($sp)
 addi $sp,$sp,4
@@ -3545,29 +2105,19 @@ addiu $sp,$sp,0
 addi $sp,$sp,-4
 sw $t0,0($sp)
 addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
 sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
 # compute the left operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v341,$fp,8
 addiu $t0,$fp,8
 # Original instruction: lw v342,0(v341)
-lw $t0,0($t0)
+lw $t1,0($t0)
 # compute the right operand
 # Original instruction: li v343,1
-li $t1,1
+li $t0,1
 # Original instruction: xor v340,v342,v343
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v340,v340,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -3600,17 +2150,7 @@ label_116_endLabel:
 label_114_return:
 # popping all used registers from the stack
 # Original instruction: popRegisters
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
 lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
 addi $sp,$sp,4
 lw $t0,0($sp)
 addi $sp,$sp,4
@@ -3651,81 +2191,7 @@ sw $t0,0($sp)
 addi $sp,$sp,-4
 sw $t1,0($sp)
 addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
 sw $t2,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
 # get address of variable
 # Original instruction: addiu v346,$fp,-16
 addiu $t0,$fp,-16
@@ -3788,17 +2254,17 @@ add $t1,$v0,$zero
 sb $t1,0($t0)
 # get address of variable
 # Original instruction: addiu v356,$fp,-12
-addiu $t0,$fp,-12
+addiu $t1,$fp,-12
 # get value to assign
 # Original instruction: li $v0,5
 li $v0,5
 # Original instruction: syscall
 syscall
 # Original instruction: add v357,$v0,$zero
-add $t1,$v0,$zero
+add $t0,$v0,$zero
 # assign value to variable address
 # Original instruction: sw v357,0(v356)
-sw $t1,0($t0)
+sw $t0,0($t1)
 # get address of variable
 # Original instruction: addiu v358,$fp,-24
 addiu $t1,$fp,-24
@@ -3910,18 +2376,18 @@ label_121_elseLabel:
 # Original instruction: addiu v376,$fp,-20
 addiu $t0,$fp,-20
 # Original instruction: lw v377,0(v376)
-lw $t1,0($t0)
+lw $t2,0($t0)
 # compute the right operand
 # compute the left operand
 # Original instruction: li v379,0
-li $t2,0
+li $t1,0
 # compute the right operand
 # Original instruction: li v380,1
 li $t0,1
 # Original instruction: sub v378,v379,v380
-sub $t0,$t2,$t0
+sub $t0,$t1,$t0
 # Original instruction: xor v375,v377,v378
-xor $t0,$t1,$t0
+xor $t0,$t2,$t0
 # Original instruction: sltiu v375,v375,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -3941,13 +2407,13 @@ b label_124_endLabel
 label_123_elseLabel:
 # get address of variable
 # Original instruction: addiu v382,$fp,-16
-addiu $t0,$fp,-16
+addiu $t1,$fp,-16
 # get value to assign
 # Original instruction: li v383,0
-li $t1,0
+li $t0,0
 # assign value to variable address
 # Original instruction: sw v383,0(v382)
-sw $t1,0($t0)
+sw $t0,0($t1)
 label_124_endLabel:
 label_122_endLabel:
 # branch to start of loop to check condition
@@ -3958,81 +2424,7 @@ label_120_endLabel:
 label_118_return:
 # popping all used registers from the stack
 # Original instruction: popRegisters
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
 lw $t2,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
 addi $sp,$sp,4
 lw $t1,0($sp)
 addi $sp,$sp,4
@@ -4074,294 +2466,6 @@ addi $sp,$sp,-4
 sw $t0,0($sp)
 addi $sp,$sp,-4
 sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t1,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
-addi $sp,$sp,-4
-sw $t0,0($sp)
 # get address of variable
 # Original instruction: addiu v384,$fp,-8
 addiu $t0,$fp,-8
@@ -4398,16 +2502,16 @@ beq $t0,$zero,label_127_elseLabel
 # Original instruction: la v392,label_30_a21
 la $t0,label_30_a21
 # Original instruction: lb v393,0(v392)
-lb $t1,0($t0)
+lb $t0,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v394,$fp,8
-addiu $t0,$fp,8
+addiu $t1,$fp,8
 # Original instruction: lb v395,0(v394)
-lb $t0,0($t0)
+lb $t1,0($t1)
 # Original instruction: xor v391,v393,v395
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v391,v391,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -4458,16 +2562,16 @@ label_129_elseLabel:
 # Original instruction: la v404,label_31_a22
 la $t0,label_31_a22
 # Original instruction: lb v405,0(v404)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v406,$fp,8
-addiu $t1,$fp,8
+addiu $t0,$fp,8
 # Original instruction: lb v407,0(v406)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v403,v405,v407
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v403,v403,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -4496,13 +2600,13 @@ sltiu $t0,$t0,1
 beq $t0,$zero,label_135_elseLabel
 # get address of variable
 # Original instruction: addiu v413,$fp,-8
-addiu $t1,$fp,-8
+addiu $t0,$fp,-8
 # get value to assign
 # Original instruction: li v414,1
-li $t0,1
+li $t1,1
 # assign value to variable address
 # Original instruction: sw v414,0(v413)
-sw $t0,0($t1)
+sw $t1,0($t0)
 # Original instruction: b label_136_endLabel
 b label_136_endLabel
 # else branch
@@ -4586,16 +2690,16 @@ label_128_endLabel:
 # Original instruction: la v428,label_28_a12
 la $t0,label_28_a12
 # Original instruction: lb v429,0(v428)
-lb $t1,0($t0)
+lb $t0,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v430,$fp,8
-addiu $t0,$fp,8
+addiu $t1,$fp,8
 # Original instruction: lb v431,0(v430)
-lb $t0,0($t0)
+lb $t1,0($t1)
 # Original instruction: xor v427,v429,v431
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v427,v427,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -4628,16 +2732,16 @@ beq $t0,$zero,label_143_elseLabel
 # Original instruction: la v438,label_34_a32
 la $t0,label_34_a32
 # Original instruction: lb v439,0(v438)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v440,$fp,8
-addiu $t1,$fp,8
+addiu $t0,$fp,8
 # Original instruction: lb v441,0(v440)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v437,v439,v441
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v437,v437,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -4694,16 +2798,16 @@ beq $t0,$zero,label_147_elseLabel
 # Original instruction: la v450,label_32_a23
 la $t0,label_32_a23
 # Original instruction: lb v451,0(v450)
-lb $t1,0($t0)
+lb $t0,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v452,$fp,8
-addiu $t0,$fp,8
+addiu $t1,$fp,8
 # Original instruction: lb v453,0(v452)
-lb $t0,0($t0)
+lb $t1,0($t1)
 # Original instruction: xor v449,v451,v453
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v449,v449,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -4715,16 +2819,16 @@ beq $t0,$zero,label_149_elseLabel
 # Original instruction: la v455,label_35_a33
 la $t0,label_35_a33
 # Original instruction: lb v456,0(v455)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v457,$fp,8
-addiu $t1,$fp,8
+addiu $t0,$fp,8
 # Original instruction: lb v458,0(v457)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v454,v456,v458
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v454,v454,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -4732,13 +2836,13 @@ sltiu $t0,$t0,1
 beq $t0,$zero,label_151_elseLabel
 # get address of variable
 # Original instruction: addiu v459,$fp,-8
-addiu $t1,$fp,-8
+addiu $t0,$fp,-8
 # get value to assign
 # Original instruction: li v460,1
-li $t0,1
+li $t1,1
 # assign value to variable address
 # Original instruction: sw v460,0(v459)
-sw $t0,0($t1)
+sw $t1,0($t0)
 # Original instruction: b label_152_endLabel
 b label_152_endLabel
 # else branch
@@ -4754,16 +2858,16 @@ label_149_elseLabel:
 # Original instruction: la v462,label_31_a22
 la $t0,label_31_a22
 # Original instruction: lb v463,0(v462)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v464,$fp,8
-addiu $t1,$fp,8
+addiu $t0,$fp,8
 # Original instruction: lb v465,0(v464)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v461,v463,v465
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v461,v461,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -4821,16 +2925,16 @@ label_148_endLabel:
 # Original instruction: la v474,label_30_a21
 la $t0,label_30_a21
 # Original instruction: lb v475,0(v474)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v476,$fp,8
-addiu $t1,$fp,8
+addiu $t0,$fp,8
 # Original instruction: lb v477,0(v476)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v473,v475,v477
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v473,v473,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -4842,16 +2946,16 @@ beq $t0,$zero,label_157_elseLabel
 # Original instruction: la v479,label_31_a22
 la $t0,label_31_a22
 # Original instruction: lb v480,0(v479)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v481,$fp,8
-addiu $t1,$fp,8
+addiu $t0,$fp,8
 # Original instruction: lb v482,0(v481)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v478,v480,v482
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v478,v478,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -4863,16 +2967,16 @@ beq $t0,$zero,label_159_elseLabel
 # Original instruction: la v484,label_32_a23
 la $t0,label_32_a23
 # Original instruction: lb v485,0(v484)
-lb $t0,0($t0)
+lb $t1,0($t0)
 # compute the right operand
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v486,$fp,8
-addiu $t1,$fp,8
+addiu $t0,$fp,8
 # Original instruction: lb v487,0(v486)
-lb $t1,0($t1)
+lb $t0,0($t0)
 # Original instruction: xor v483,v485,v487
-xor $t0,$t0,$t1
+xor $t0,$t1,$t0
 # Original instruction: sltiu v483,v483,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -4880,13 +2984,13 @@ sltiu $t0,$t0,1
 beq $t0,$zero,label_161_elseLabel
 # get address of variable
 # Original instruction: addiu v488,$fp,-8
-addiu $t1,$fp,-8
+addiu $t0,$fp,-8
 # get value to assign
 # Original instruction: li v489,1
-li $t0,1
+li $t1,1
 # assign value to variable address
 # Original instruction: sw v489,0(v488)
-sw $t0,0($t1)
+sw $t1,0($t0)
 # Original instruction: b label_162_endLabel
 b label_162_endLabel
 # else branch
@@ -5006,294 +3110,6 @@ b label_126_return
 label_126_return:
 # popping all used registers from the stack
 # Original instruction: popRegisters
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
-lw $t1,0($sp)
-addi $sp,$sp,4
-lw $t0,0($sp)
-addi $sp,$sp,4
 lw $t1,0($sp)
 addi $sp,$sp,4
 lw $t0,0($sp)
@@ -5326,13 +3142,13 @@ addiu $sp,$sp,-4
 addiu $sp,$sp,-16
 # get address of variable
 # Original instruction: la v509,label_36_empty
-la $t0,label_36_empty
+la $t1,label_36_empty
 # get value to assign
 # Original instruction: li v510,32
-li $t1,32
+li $t0,32
 # assign value to variable address
 # Original instruction: sb v510,0(v509)
-sb $t1,0($t0)
+sb $t0,0($t1)
 # get address of variable
 # Original instruction: addiu v511,$fp,-8
 addiu $t1,$fp,-8
@@ -5410,7 +3226,7 @@ jal label_117_selectmove
 addiu $sp,$sp,4
 # get address of variable
 # Original instruction: addiu v522,$fp,-16
-addiu $t1,$fp,-16
+addiu $t0,$fp,-16
 # get value to assign
 # move sp by the to allocate space for the args and return value
 # Original instruction: addiu $sp,$sp,-8
@@ -5422,22 +3238,22 @@ addiu $sp,$sp,-4
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v524,$fp,-12
-addiu $t0,$fp,-12
+addiu $t1,$fp,-12
 # Original instruction: lw v525,0(v524)
-lw $t0,0($t0)
+lw $t1,0($t1)
 # Original instruction: sw v525,8($sp)
-sw $t0,8($sp)
+sw $t1,8($sp)
 # Original instruction: jal label_113_get_mark
 jal label_113_get_mark
 # read return value from the stack
 # Original instruction: lb v523,0($sp)
-lb $t0,0($sp)
+lb $t1,0($sp)
 # move sp to deallocate the space of the args and return value
 # Original instruction: addiu $sp,$sp,8
 addiu $sp,$sp,8
 # assign value to variable address
 # Original instruction: sb v523,0(v522)
-sb $t0,0($t1)
+sb $t1,0($t0)
 # move sp by the to allocate space for the args and return value
 # Original instruction: addiu $sp,$sp,0
 addiu $sp,$sp,0
@@ -5547,20 +3363,20 @@ add $a0,$zero,$t0
 syscall
 # get address of variable
 # Original instruction: addiu v539,$fp,-8
-addiu $t1,$fp,-8
+addiu $t0,$fp,-8
 # get value to assign
 # Original instruction: li v540,0
-li $t0,0
+li $t1,0
 # assign value to variable address
 # Original instruction: sw v540,0(v539)
-sw $t0,0($t1)
+sw $t1,0($t0)
 # Original instruction: b label_176_endLabel
 b label_176_endLabel
 # else branch
 label_175_elseLabel:
 # get address of variable
 # Original instruction: addiu v541,$fp,-12
-addiu $t0,$fp,-12
+addiu $t1,$fp,-12
 # get value to assign
 # move sp by the to allocate space for the args and return value
 # Original instruction: addiu $sp,$sp,-8
@@ -5572,22 +3388,22 @@ addiu $sp,$sp,-4
 # get address of the variable
 # get address of variable
 # Original instruction: addiu v543,$fp,-12
-addiu $t1,$fp,-12
+addiu $t0,$fp,-12
 # Original instruction: lw v544,0(v543)
-lw $t1,0($t1)
+lw $t0,0($t0)
 # Original instruction: sw v544,8($sp)
-sw $t1,8($sp)
+sw $t0,8($sp)
 # Original instruction: jal label_109_switchPlayer
 jal label_109_switchPlayer
 # read return value from the stack
 # Original instruction: lw v542,0($sp)
-lw $t1,0($sp)
+lw $t0,0($sp)
 # move sp to deallocate the space of the args and return value
 # Original instruction: addiu $sp,$sp,8
 addiu $sp,$sp,8
 # assign value to variable address
 # Original instruction: sw v542,0(v541)
-sw $t1,0($t0)
+sw $t0,0($t1)
 label_176_endLabel:
 label_174_endLabel:
 # compute the left operand
@@ -5634,12 +3450,12 @@ sb $t1,0($t0)
 # Original instruction: addiu v553,$fp,-20
 addiu $t0,$fp,-20
 # Original instruction: lb v554,0(v553)
-lb $t1,0($t0)
+lb $t0,0($t0)
 # compute the right operand
 # Original instruction: li v555,121
-li $t0,121
+li $t1,121
 # Original instruction: xor v552,v554,v555
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v552,v552,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
@@ -5677,12 +3493,12 @@ label_179_elseLabel:
 # Original instruction: addiu v560,$fp,-20
 addiu $t0,$fp,-20
 # Original instruction: lb v561,0(v560)
-lb $t1,0($t0)
+lb $t0,0($t0)
 # compute the right operand
 # Original instruction: li v562,89
-li $t0,89
+li $t1,89
 # Original instruction: xor v559,v561,v562
-xor $t0,$t1,$t0
+xor $t0,$t0,$t1
 # Original instruction: sltiu v559,v559,1
 sltiu $t0,$t0,1
 # check if condition is true, branch to else if false
