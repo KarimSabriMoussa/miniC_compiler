@@ -1,9 +1,7 @@
 package ast;
 
 public sealed interface Type extends ASTNode
-                permits BaseType, StructType, PointerType, ArrayType {
-
-
+                permits BaseType, StructType, PointerType, ArrayType, ClassType {
 
         public static boolean equals(Type t1, Type t2) {
                 return switch (t1) {
@@ -48,6 +46,16 @@ public sealed interface Type extends ASTNode
                                 yield switch (t2) {
                                         case BaseType bt2 -> {
                                                 yield bt1.equals(bt2);
+                                        }
+                                        case null, default -> {
+                                                yield false;
+                                        }
+                                };
+                        }
+                        case ClassType ct1 -> {
+                                yield switch (t2) {
+                                        case ClassType ct2 ->{
+                                                yield ct1.name.equals(ct2.name);
                                         }
                                         case null, default -> {
                                                 yield false;

@@ -5,24 +5,25 @@ import java.util.Arrays;
 
 public final class FieldAccessExpr extends Expr {
 
-    public Expr struct;
-    public String member;
+    public Expr target;
+    public String field;
     public StructType st;
+    public ClassType ct;
 
-    public FieldAccessExpr(Expr struct, String member) {
-        this.struct = struct;
-        this.member = member;
+    public FieldAccessExpr(Expr target, String field) {
+        this.target = target;
+        this.field = field;
     }
 
     @Override
     public List<ASTNode> children() {
-        return Arrays.asList(struct);
+        return Arrays.asList(target);
     }
 
-    public VarDecl getMember(String member) {
-        for (VarDecl m : st.std.vds) {
-            if (m.name.equals(member)) {
-                return m;
+    public VarDecl getField(String field) {
+        for (VarDecl f : st.std.vds) {
+            if (f.name.equals(field)) {
+                return f;
             }
         }
 

@@ -87,6 +87,33 @@ public class ASTPrinter {
                 writer.print(")");
             }
 
+            case ClassDecl cd -> {
+                writer.print("ClassDecl(");
+                visit(cd.classType);
+                if (cd.parentType != null) {
+                    writer.print(comma);
+                    visit(cd.parentType);
+                }
+
+                for (VarDecl vd : cd.vds) {
+                    writer.print(comma);
+                    visit(vd);
+                }
+
+                for (FunDecl fd : cd.funDecls) {
+                    writer.print(comma);
+                    visit(fd);
+                }
+
+                writer.print(")");
+            }
+
+            case ClassType ct -> {
+                writer.print("ClassType(");
+                writer.print(ct.name);
+                writer.print(")");
+            }
+
             case Continue c -> {
                 writer.print("Continue()");
             }
@@ -99,9 +126,9 @@ public class ASTPrinter {
 
             case FieldAccessExpr fae -> {
                 writer.print("FieldAccessExpr(");
-                visit(fae.struct);
+                visit(fae.target);
                 writer.print(comma);
-                writer.print(fae.member);
+                writer.print(fae.field);
                 writer.print(")");
             }
 
@@ -152,8 +179,22 @@ public class ASTPrinter {
                 writer.print(")");
             }
 
+            case InstanceFunCallExpr ifce -> {
+                writer.print("InstanceFunCallExpr(");
+                visit(ifce.classInstance);
+                writer.print(comma);
+                visit(ifce.classFuncCall);
+                writer.print(")");
+            }
+
             case IntLiteral il -> {
                 writer.print("IntLiteral(" + il.value + ")");
+            }
+
+            case NewInstance ni -> {
+                writer.print("NewInstance(");
+                visit(ni.classType);
+                writer.print(")");
             }
 
             case PointerType pt -> {
