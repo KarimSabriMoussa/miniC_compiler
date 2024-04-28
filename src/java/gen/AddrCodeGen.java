@@ -49,8 +49,8 @@ public class AddrCodeGen extends CodeGen {
                 Section currSection = asmProg.getCurrentSection();
 
                 currSection.emit("get address of the structure");
-                Register addr = visit(fae.struct);
-                VarDecl member = fae.getMember(fae.member);
+                Register addr = visit(fae.target);
+                VarDecl member = fae.getField(fae.field);
 
                 currSection.emit("add offset of the member within the struct");
                 currSection.emit(OpCode.ADDIU, addr, addr, member.structOffset);
@@ -111,6 +111,9 @@ public class AddrCodeGen extends CodeGen {
                 yield null;
             }
             case StrLiteral sl -> {
+                yield null;
+            }
+            case ASTNode a ->{
                 yield null;
             }
         };

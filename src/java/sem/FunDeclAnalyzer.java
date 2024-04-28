@@ -45,6 +45,9 @@ public class FunDeclAnalyzer extends BaseSemanticAnalyzer {
                 }
             }
             case ASTNode n -> {
+                for (ASTNode child : n.children()) {
+                    visit(child);
+                }
             }
         }
     }

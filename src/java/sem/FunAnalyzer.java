@@ -37,9 +37,11 @@ public class FunAnalyzer extends BaseSemanticAnalyzer {
                 }
             }
             case FunCallExpr fce -> {
-                calls.add(fce);
-                for (ASTNode child : fce.children()) {
-                    visit(child);
+                if (fce.fd == null) {
+                    calls.add(fce);
+                    for (ASTNode child : fce.children()) {
+                        visit(child);
+                    }
                 }
             }
             case Return r -> {
@@ -48,6 +50,16 @@ public class FunAnalyzer extends BaseSemanticAnalyzer {
                 for (ASTNode child : r.children()) {
                     visit(child);
                 }
+            }
+
+            case ClassDecl cd -> {
+                for (FunDecl fd : cd.funDecls) {
+                    visit(fd);
+                }
+            }
+
+            case InstanceFunCallExpr ifce -> {
+                visit(ifce.classInstance);
             }
             case Program p -> {
                 for (ASTNode child : p.children()) {

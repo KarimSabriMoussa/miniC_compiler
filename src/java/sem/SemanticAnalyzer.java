@@ -12,6 +12,10 @@ public class SemanticAnalyzer extends CompilerPass {
 		na.visit(prog);
 		this.numErrors += na.getNumErrors();
 
+		ClassAnalyzer ca = new ClassAnalyzer();
+		ca.visit(prog);
+		this.numErrors += ca.getNumErrors();
+
 		FunAnalyzer fpa = new FunAnalyzer();
 		fpa.visit(prog);
 		this.numErrors += fpa.getNumErrors();

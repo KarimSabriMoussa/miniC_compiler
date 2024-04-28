@@ -3,6 +3,7 @@ package sem;
 import ast.ASTNode;
 import ast.ArrayType;
 import ast.BaseType;
+import ast.ClassType;
 import ast.Decl;
 import ast.PointerType;
 import ast.Program;
@@ -54,6 +55,9 @@ public class StructDeclAnalyzer extends BaseSemanticAnalyzer {
                 return checkVarDecl(at.type, structType);
             }
             case PointerType pt -> {
+                return true;
+            }
+            case ClassType ct -> {
                 return true;
             }
             case BaseType t -> {

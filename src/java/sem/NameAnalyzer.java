@@ -1,10 +1,10 @@
-package sem;
+package sem; 
 
 import ast.*;
 
 public class NameAnalyzer extends BaseSemanticAnalyzer {
 
-	Scope currScope;
+	private Scope currScope;
 
 	public void visit(ASTNode node) {
 		switch (node) {
@@ -21,6 +21,28 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 					visit(child);
 				}
 				currScope = oldScope;
+			}
+
+			case ClassDecl cd -> {
+
+				Symbol symbol = currScope.lookupCurrent(cd.name);
+
+				if (symbol == null) {
+
+					if (cd.parentType != null) {
+						String parentName = getClassTypeName(cd.parentType);
+						Symbol parentSymbol = currScope.lookupCurrent(parentName);
+
+						if (parentSymbol == null) {
+							error("parent class declaration missing");
+						}
+					}
+
+					currScope.put(new ClassDeclSymbol(cd));
+				} else {
+					error("duplicate class declaration");
+				}
+
 			}
 
 			case FunDecl fd -> {
@@ -177,6 +199,31 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 
 			}
 
+			case ClassType ct -> {
+
+				String name = getClassTypeName(ct);
+
+				Symbol symbol = currScope.lookup(name);
+
+				switch (symbol) {
+					case ClassDeclSymbol cds -> {
+						ct.cd = cds.cd;
+					}
+
+					case null, default -> {
+						error("missing class declaration");
+					}
+				}
+			}
+
+			case NewInstance ni -> {
+				visit(ni.classType);
+			}
+
+			case InstanceFunCallExpr ifce -> {
+				visit(ifce.classInstance);
+			}
+
 			case Expr e -> {
 				for (ASTNode child : e.children()) {
 					visit(child);
@@ -210,6 +257,10 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 
 	private String getStructTypeName(StructType st) {
 		return "struct " + st.name;
+	}
+
+	private String getClassTypeName(ClassType ct) {
+		return "class " + ct.name;
 	}
 
 }

@@ -12,10 +12,12 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 			Op.LT);
 	private List<Op> equality_ops = Arrays.asList(Op.EQ, Op.NE);
 
-	Map<String, StructTypeDecl> structs;
+	private Map<String, StructTypeDecl> structs;
+	private Map<String, ClassDecl> classes;
 
 	public TypeAnalyzer() {
 		this.structs = new HashMap<String, StructTypeDecl>();
+		this.classes = new HashMap<String, ClassDecl>();
 	}
 
 	public Type visit(ASTNode node) {
@@ -63,6 +65,16 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 
 				for (VarDecl vd : std.vds) {
 					visit(vd);
+				}
+
+				yield BaseType.NONE;
+			}
+
+			case ClassDecl cd -> {
+				classes.put(cd.classType.name, cd);
+
+				for (ASTNode child : cd.children()) {
+					visit(child);
 				}
 
 				yield BaseType.NONE;
@@ -141,6 +153,33 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 				yield BaseType.UNKNOWN;
 			}
 
+			case InstanceFunCallExpr ifce -> {
+
+				Type classType = visit(ifce.classInstance);
+
+				for (ASTNode child : ifce.classFuncCall.children()) {
+					visit(child);
+				}
+
+				switch (classType) {
+					case ClassType ct -> {
+						Type t = matchInstanceFunCallToFunDecl(ifce, ct);
+
+						if (t != null) {
+							ifce.type = t;
+							yield ifce.type;
+						}
+					}
+					default -> {
+						error("cannot call a class function on a non class type");
+						yield BaseType.UNKNOWN;
+					}
+				}
+
+				error("function declaration missing");
+				yield BaseType.UNKNOWN;
+			}
+
 			case ArrayAccessExpr aae -> {
 
 				Type arrayType = visit(aae.array);
@@ -169,33 +208,48 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 
 			case FieldAccessExpr fae -> {
 
-				Type structType = visit(fae.struct);
-				StructTypeDecl std;
+				Type targetType = visit(fae.target);
 
-				switch (structType) {
+				switch (targetType) {
 					case StructType st -> {
-						std = structs.get(st.name);
+						StructTypeDecl std = structs.get(st.name);
 						if (std == null) {
 							error("struct decleration missing");
 							yield BaseType.UNKNOWN;
 						}
 
 						fae.st = st;
+
+						for (VarDecl vd : std.vds) {
+							if (fae.field != null && fae.field.equals(vd.name)) {
+								fae.type = vd.type;
+								yield fae.type;
+							}
+						}
+					}
+					case ClassType ct -> {
+						ClassDecl cd = classes.get(ct.name);
+						if (cd == null) {
+							error("class decleration missing");
+							yield BaseType.UNKNOWN;
+						}
+
+						fae.ct = ct;
+
+						Type t = getFieldType(fae.field, ct);
+
+						if (t != null) {
+							fae.type = t;
+							yield fae.type;
+						}
 					}
 					default -> {
-						error("cannot access field of an expression of type other than a struct");
+						error("cannot access field of an expression of type other than a struct or class");
 						yield BaseType.UNKNOWN;
 					}
 				}
 
-				for (VarDecl vd : std.vds) {
-					if (fae.member != null && fae.member.equals(vd.name)) {
-						fae.type = vd.type;
-						yield fae.type;
-					}
-				}
-
-				error("struct declaration does not contain this member");
+				error("struct or class declaration does not contain this field");
 				yield BaseType.UNKNOWN;
 			}
 
@@ -255,6 +309,19 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 							}
 						}
 					}
+					case ClassType parentType -> {
+						switch (exprT) {
+							case ClassType ct -> {
+								if (isAncestorOf(parentType, ct)) {
+									tce.type = parentType;
+									yield tce.type;
+								}
+							}
+							default -> {
+
+							}
+						}
+					}
 					default -> {
 					}
 				}
@@ -298,6 +365,11 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 
 				error("variable declaration missing");
 				yield BaseType.UNKNOWN;
+			}
+
+			case NewInstance ni -> {
+				ni.type = ni.classType;
+				yield ni.type;
 			}
 
 			case IntLiteral il -> {
@@ -386,6 +458,66 @@ public class TypeAnalyzer extends BaseSemanticAnalyzer {
 			}
 		};
 
+	}
+
+	private boolean isAncestorOf(ClassType ancestorType, ClassType ct) {
+		ClassDecl currClass = classes.get(ct.name);
+
+		while (currClass != null) {
+			if (Type.equals(currClass.classType, ancestorType)) {
+				return true;
+			}
+
+			if (currClass.parentType != null) {
+				currClass = classes.get(currClass.parentType.name);
+			} else {
+				currClass = null;
+			}
+		}
+		return false;
+	}
+
+	private Type matchInstanceFunCallToFunDecl(InstanceFunCallExpr ifce, ClassType ct) {
+		ClassDecl currClass = classes.get(ct.name);
+
+		while (currClass != null) {
+			for (FunDecl fd : currClass.funDecls) {
+				if (fd.name.equals(ifce.classFuncCall.name)) {
+					ifce.classFuncCall.fd = fd;
+					return matchFunCallToFunDecl(ifce.classFuncCall, fd);
+				}
+			}
+			
+			if (currClass.parentType == null) {
+				break;
+			}
+
+			currClass = classes.get(currClass.parentType.name);
+		}
+
+		return null;
+
+	}
+
+	private Type getFieldType(String field, ClassType ct) {
+
+		ClassDecl currClass = classes.get(ct.name);
+
+		while (currClass != null) {
+			for (VarDecl vd : currClass.vds) {
+				if (field != null && field.equals(vd.name)) {
+					return vd.type;
+				}
+			}
+
+			if (currClass.parentType == null) {
+				break;
+			}
+
+			currClass = classes.get(currClass.parentType.name);
+		}
+
+		return null;
 	}
 
 	private Type matchFunCallToFunDecl(FunCallExpr fce, FunDecl fd) {

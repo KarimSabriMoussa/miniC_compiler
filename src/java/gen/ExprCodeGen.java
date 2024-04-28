@@ -31,13 +31,12 @@ public class ExprCodeGen extends CodeGen {
             case Assign a -> {
 
                 Section currSection = asmProg.getCurrentSection();
- 
+
                 Register addr = (new AddrCodeGen(asmProg)).visit(a.variable);
 
                 currSection.emit("get value to assign");
                 Register value = visit(a.value);
 
-                
                 currSection.emit("assign value to variable address");
                 switch (a.variable.type) {
                     case BaseType.INT -> {
@@ -108,13 +107,11 @@ public class ExprCodeGen extends CodeGen {
 
                 Register result = Register.Virtual.create();
 
-                
                 currSection.emit("get address of the member in memory");
                 Register addr = (new AddrCodeGen(asmProg)).visit(fae);
 
-                VarDecl member = fae.getMember(fae.member);
-                
-                
+                VarDecl member = fae.getField(fae.field);
+
                 currSection.emit("load value of the member");
                 switch (member.type) {
                     case BaseType.INT -> {
@@ -142,7 +139,7 @@ public class ExprCodeGen extends CodeGen {
             case SizeOfExpr soe -> {
                 Section currSection = asmProg.getCurrentSection();
                 Register resultRegister = Register.Virtual.create();
-                
+
                 currSection.emit("get size of the type");
                 currSection.emit(OpCode.LI, resultRegister, Type.getSize(soe.target_type));
 
@@ -159,12 +156,10 @@ public class ExprCodeGen extends CodeGen {
                         Label falseLabel = Label.create();
                         Label endAND = Label.create();
 
-                        
                         currSection.emit("compute the left operand");
                         leftRegister = visit(bo.leftOperand);
                         currSection.emit(OpCode.BEQZ, leftRegister, falseLabel);
 
-                        
                         currSection.emit("compute the right operand");
                         rightRegister = visit(bo.rightOperand);
                         currSection.emit(OpCode.ADDIU, resultRegister, rightRegister, 0);
@@ -180,12 +175,10 @@ public class ExprCodeGen extends CodeGen {
                         Label trueLabel = Label.create();
                         Label endOR = Label.create();
 
-                        
                         currSection.emit("compute the left operand");
                         leftRegister = visit(bo.leftOperand);
                         currSection.emit(OpCode.BNEZ, leftRegister, trueLabel);
 
-                        
                         currSection.emit("compute the right operand");
                         rightRegister = visit(bo.rightOperand);
                         currSection.emit(OpCode.BNEZ, rightRegister, trueLabel);
@@ -202,7 +195,6 @@ public class ExprCodeGen extends CodeGen {
                         break;
                 }
 
-                
                 currSection.emit("compute the left operand");
                 leftRegister = visit(bo.leftOperand);
                 currSection.emit("compute the right operand");
@@ -261,11 +253,10 @@ public class ExprCodeGen extends CodeGen {
 
                 Section currSection = asmProg.getCurrentSection();
                 Register returnValue = Register.Virtual.create();
-                
-                
+
                 currSection.emit("move sp by the to allocate space for the args and return value");
                 currSection.emit(OpCode.ADDIU, Register.Arch.sp, Register.Arch.sp, -fce.fd.argSegmentSize);
-                
+
                 currSection.emit("move sp onto the new frame");
                 currSection.emit(OpCode.ADDIU, Register.Arch.sp, Register.Arch.sp, -4);
 
@@ -323,7 +314,6 @@ public class ExprCodeGen extends CodeGen {
                     }
                 }
 
-                
                 currSection.emit("move sp to deallocate the space of the args and return value");
                 currSection.emit(OpCode.ADDIU, Register.Arch.sp, Register.Arch.sp, fce.fd.argSegmentSize);
 
@@ -336,7 +326,6 @@ public class ExprCodeGen extends CodeGen {
                 Register addr = (new AddrCodeGen(asmProg)).visit(ve);
                 Register value = Register.Virtual.create();
 
-                
                 switch (ve.vd.type) {
                     case BaseType.INT -> {
                         currSection.emit(OpCode.LW, value, addr, 0);
@@ -386,12 +375,11 @@ public class ExprCodeGen extends CodeGen {
             case ValueAtExpr vae -> {
 
                 Section currSection = asmProg.getCurrentSection();
-                
+
                 currSection.emit("get address of the expression");
                 Register addrPointedTo = (new AddrCodeGen(asmProg)).visit(vae);
                 Register result = Register.Virtual.create();
 
-                
                 currSection.emit("get value at that expression");
                 switch (vae.type) {
                     case BaseType.CHAR -> {
@@ -416,6 +404,9 @@ public class ExprCodeGen extends CodeGen {
 
                 yield result;
 
+            }
+            case ASTNode a -> {
+                yield null;
             }
 
         };
