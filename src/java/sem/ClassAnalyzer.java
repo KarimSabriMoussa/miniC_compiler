@@ -42,7 +42,7 @@ public class ClassAnalyzer extends BaseSemanticAnalyzer {
                     Scope oldScope = currScope;
                     currScope = new Scope(oldScope);
 
-                    if (cd.parentType != null) {
+                    if (cd.parentType != null && parentSymbol != null) {
                         addAncestorFieldsToCurrScope(cd);
                         addAncestorFuncsToCurrScope(cd);
                     }
