@@ -72,6 +72,7 @@ public sealed interface Type extends ASTNode
                         case BaseType.CHAR -> 1;
                         case ArrayType a -> a.arraySize * getSize(a.type);
                         case PointerType p -> 4;
+                        case ClassType c -> 4;
                         case StructType s -> s.std.size;
                         default -> throw new IllegalStateException("can't compute size for this type");
                 };
@@ -84,6 +85,7 @@ public sealed interface Type extends ASTNode
                         case BaseType.CHAR -> 1;
                         case ArrayType a -> 4;
                         case PointerType p -> 4;
+                        case ClassType c -> 4;
                         case StructType s -> s.std.size;
                         default -> throw new IllegalStateException("can't compute size for this type");
                 };

@@ -222,6 +222,10 @@ public class NameAnalyzer extends BaseSemanticAnalyzer {
 
 			case InstanceFunCallExpr ifce -> {
 				visit(ifce.classInstance);
+
+				for(ASTNode vd: ifce.classFuncCall.children()){
+					visit(vd);
+				}
 			}
 
 			case Expr e -> {
