@@ -1,0 +1,85 @@
+# #  comment
+# () grouping
+# [] optional
+# *  zero or more
+# +  one or more
+# |  alternative
+
+# This is a modified syntax which better represents the implementation 
+of the parser which produces an AST, removing any left recursion, 
+performs left factorisation, applies the proper associativity and precedence of operators
+
+
+program    	::= (include)* (classdecl | structdecl | vardecl | funheader)* EOF
+
+include   	::= "#include" STRING_LITERAL
+
+structdecl 	::= structtype "{" members "}" ";"   
+
+classdecl  ::= classtype ["extends" IDENT] "{" (vardecl)* (fundecl)* "}"  
+
+members	   	::= vardecl members | vardecl
+
+vardecl    	::= type IDENT ("[" INT_LITERAL "]")* ";" 
+
+funheader 	::= type IDENT "(" paramlist ")" funtail
+
+funtail 	::= block | ";"
+
+fundecl     ::= type IDENT "(" paramlist ")" block
+
+type       	::= ("int" | "char" | "void" | structtype | classtype) ("*")*
+
+structtype 	::= "struct" IDENT
+
+classtype  ::= "class" IDENT
+
+paramlist	::=  param paramprime | empty
+
+paramprime	::= "," param paramprime | empty
+
+param 		::= type IDENT ("[" INT_LITERAL "]")*
+
+
+stmt		::=   block
+				| "while" "(" exp ")" stmt              # while loop
+				| "if" "(" exp ")" stmt ["else" stmt]   # if then else
+				| "return" [exp] ";"                    # return
+				| exp ";"                               
+				| "continue" ";"                        # continue
+				| "break" ";"          
+
+                
+block      ::= "{" (vardecl)* (stmt)* "}"
+
+exp ::= Assignment
+
+Assignment := BinOp ( "=" Assignment | e)
+
+BinOp ::= OrOp ( "||" OrOp )*
+
+OrOp ::= AndOp ("&&" AndOp)*
+
+AndOp::= relEqualityOp ( ("=="|"!=") relEqualityOp )*
+
+relEqualityOp ::= relationalOp ( (">" | "<" | ">=" | "<=") relationalOp )*
+ 
+relationalOp :== term ( ( "+" | "-") term)*
+
+term ::= factor ( ( "/" | "*"| "%") factor)*
+
+factor ::= AccessExpr | (( "+" | "-" | "*" | "&" | "(" type ")" | "new" ) factor)
+
+AccessExpr = exprTerminals ( "." IDENT | "[" exp "]" | "." funcall)* 
+
+exprTerminals ::= (IDENT | INT_LITERAL |CHAR_LITERAL| STRING_LITERAL| sizeof| funcall| "(" exp ")") 
+		   
+
+# first sets
+
+first(stmt) = { "{", "while", "if", "return", "continue", "break", first(exp)};
+first(exp) = { "(" , IDENT, INT_LITERAL, "-", "+", CHAR_LITERAL, STRING_LITERAL. "*", "&", "sizeof", "new" };
+first(binOp) = {">" , "<" , ">=" , "<=" , "!=" , "==" , "+" , "-" , "/" , "*" , "%" , "||" , "&&"};
+
+funcall      ::= IDENT "(" [ exp ("," exp)* ] ")" # function call 
+sizeof       ::= "sizeof" "(" type ")"            # size of type 
