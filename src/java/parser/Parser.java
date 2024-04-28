@@ -9,6 +9,8 @@ import ast.BinOp;
 import ast.Block;
 import ast.Break;
 import ast.ChrLiteral;
+import ast.ClassDecl;
+import ast.ClassType;
 import ast.Continue;
 import ast.Decl;
 import ast.Expr;
@@ -18,7 +20,9 @@ import ast.FunCallExpr;
 import ast.FunDecl;
 import ast.FunProto;
 import ast.If;
+import ast.InstanceFunCallExpr;
 import ast.IntLiteral;
+import ast.NewInstance;
 import ast.Op;
 import ast.PointerType;
 import ast.Program;
@@ -66,6 +70,8 @@ public class Parser extends CompilerPass {
 
     private Category[] unaryOp = { Category.PLUS, Category.MINUS };
 
+    private Category[] first_type = { Category.CLASS, Category.STRUCT, Category.INT, Category.CHAR, Category.VOID };
+
     public Parser(Tokeniser tokeniser) {
         this.tokeniser = tokeniser;
     }
@@ -106,7 +112,7 @@ public class Parser extends CompilerPass {
      * i should be >= 1
      */
     private Token lookAhead(int i) {
-        // ensures the buffer has the element we want to look ahead
+        // ensurea we want to look ahead
         while (buffer.size() < i)
             buffer.add(tokeniser.nextToken());
 
@@ -179,8 +185,10 @@ public class Parser extends CompilerPass {
 
         List<Decl> decls = new ArrayList<>();
 
-        while (accept(Category.STRUCT, Category.INT, Category.CHAR, Category.VOID)) {
-            if (accept(Category.STRUCT) &&
+        while (accept(first_type)) {
+            if (accept(Category.CLASS)) {
+                decls.add(parseClassDecl());
+            } else if (accept(Category.STRUCT) &&
                     acceptLookAhead(1, Category.IDENTIFIER) &&
                     acceptLookAhead(2, Category.LBRA)) {
                 decls.add(parseStructDecl());
@@ -191,6 +199,61 @@ public class Parser extends CompilerPass {
 
         expect(Category.EOF);
         return new Program(decls);
+    }
+
+    private ClassDecl parseClassDecl() {
+
+        ClassType parentType = null;
+        ClassType classType = null;
+
+        expect(Category.CLASS);
+        Token id = expect(Category.IDENTIFIER);
+        classType = new ClassType(id.data);
+
+        if (accept(Category.EXTENDS)) {
+            expect(Category.EXTENDS);
+            Token parentId = expect(Category.IDENTIFIER);
+            parentType = new ClassType(parentId.data);
+        }
+
+        List<VarDecl> vds = new ArrayList<VarDecl>();
+        List<FunDecl> funDecls = new ArrayList<FunDecl>();
+
+        expect(Category.LBRA);
+
+        while (accept(first_type)) {
+            Type t = parseType();
+            if (acceptLookAhead(1, Category.LPAR)) {
+                funDecls.add(parseClassFunDecl(t));
+                break;
+            }
+            vds.add(parseVarDecl(t));
+        }
+
+        while (accept(first_type)) {
+            Type t = parseType();
+            funDecls.add(parseClassFunDecl(t));
+        }
+
+        expect(Category.RBRA);
+
+        return new ClassDecl(classType, parentType, vds, funDecls);
+    }
+
+    private FunDecl parseClassFunDecl(Type t) {
+
+        List<VarDecl> params = new ArrayList<>();
+        Token id = expect(Category.IDENTIFIER);
+
+        expect(Category.LPAR);
+
+        params = parseParamList();
+
+        expect(Category.RPAR);
+
+        Block block = parseBlock();
+
+        return new FunDecl(t, id.data, params, block);
     }
 
     // includes are ignored, so does not need to return an AST node
@@ -225,7 +288,7 @@ public class Parser extends CompilerPass {
 
         vds.add(parseVarDecl());
 
-        if (accept(Category.STRUCT, Category.INT, Category.CHAR, Category.VOID)) {
+        if (accept(first_type)) {
             vds.addAll(parseMembers());
         }
 
@@ -331,6 +394,10 @@ public class Parser extends CompilerPass {
             expect(Category.STRUCT);
             Token id = expect(Category.IDENTIFIER);
             t = new StructType(id.data);
+        } else if (accept(Category.CLASS)) {
+            expect(Category.CLASS);
+            Token id = expect(Category.IDENTIFIER);
+            t = new ClassType(id.data);
         } else if (accept(Category.INT)) {
             expect(Category.INT);
             t = BaseType.INT;
@@ -341,7 +408,7 @@ public class Parser extends CompilerPass {
             expect(Category.VOID);
             t = BaseType.VOID;
         } else {
-            error(Category.STRUCT, Category.INT, Category.CHAR, Category.VOID);
+            error(first_type);
         }
 
         while (accept(Category.ASTERISK)) {
@@ -357,7 +424,7 @@ public class Parser extends CompilerPass {
 
         List<VarDecl> vds = new ArrayList<VarDecl>();
 
-        if (accept(Category.STRUCT, Category.INT, Category.CHAR, Category.VOID)) {
+        if (accept(first_type)) {
             vds.add(parseParam());
             vds.addAll(parseParamPrime());
         }
@@ -498,7 +565,7 @@ public class Parser extends CompilerPass {
 
         expect(Category.LBRA);
 
-        while (accept(Category.STRUCT, Category.INT, Category.CHAR, Category.VOID)) {
+        while (accept(first_type)) {
             vds.add(parseVarDecl());
         }
 
@@ -636,16 +703,26 @@ public class Parser extends CompilerPass {
             Expr rhs = parseFactor();
             return new AddressOfExpr(rhs);
         } else if ((accept(Category.LPAR)
-                && acceptLookAhead(1, Category.STRUCT, Category.INT, Category.CHAR, Category.VOID))) {
+                && acceptLookAhead(1, first_type))) {
             expect(Category.LPAR);
             Type type = parseType();
             expect(Category.RPAR);
             Expr rhs = parseFactor();
             return new TypecastExpr(type, rhs);
+        } else if (accept(Category.NEW)) {
+            return parseNewInstance();
         } else {
             return parseAccessExpr();
         }
 
+    }
+    
+    private Expr parseNewInstance() {
+        expect(Category.NEW);
+        Token id = expect(Category.IDENTIFIER);
+        expect(Category.LPAR);
+        expect(Category.RPAR);
+        return new NewInstance(new ClassType(id.data));
     }
 
     private Expr parseAccessExpr() {
@@ -656,6 +733,10 @@ public class Parser extends CompilerPass {
                 Expr index = parseExp();
                 expect(Category.RSBR);
                 lhs = new ArrayAccessExpr(lhs, index);
+            } else if (accept(Category.DOT) && acceptLookAhead(2, Category.LPAR)) {
+                expect(Category.DOT);
+                FunCallExpr funCall = parseFunCall();
+                lhs = new InstanceFunCallExpr(lhs, funCall);
             } else if (accept(Category.DOT)) {
                 expect(Category.DOT);
                 Token id = expect(Category.IDENTIFIER);
@@ -669,14 +750,7 @@ public class Parser extends CompilerPass {
     private Expr parseExprTerminals() {
 
         if (accept(Category.IDENTIFIER) && acceptLookAhead(1, Category.LPAR)) {
-            Token id = expect(Category.IDENTIFIER);
-            expect(Category.LPAR);
-
-            List<Expr> args = parseArgList();
-
-            expect(Category.RPAR);
-
-            return new FunCallExpr(id.data, args);
+            return parseFunCall();
         } else if (accept(Category.IDENTIFIER)) {
             Token t = expect(Category.IDENTIFIER);
             return new VarExpr(t.data);
@@ -705,6 +779,17 @@ public class Parser extends CompilerPass {
             error();
             return null;
         }
+    }
+
+    private FunCallExpr parseFunCall() {
+        Token id = expect(Category.IDENTIFIER);
+        expect(Category.LPAR);
+
+        List<Expr> args = parseArgList();
+
+        expect(Category.RPAR);
+
+        return new FunCallExpr(id.data, args);
     }
 
     private List<Expr> parseArgList() {
