@@ -42,6 +42,10 @@ public class Token {
         SIZEOF, // 'sizeof'
         CONTINUE, // 'continue'
         BREAK, // 'break'
+        CLASS, // 'class'
+        EXTENDS, // 'extends'
+        NEW, // 'new'
+        
 
         // include
         INCLUDE, // '#include'

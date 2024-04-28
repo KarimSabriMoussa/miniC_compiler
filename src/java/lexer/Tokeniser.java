@@ -125,41 +125,52 @@ public class Tokeniser extends CompilerPass {
                 }
             }
 
-            if (sb.toString().equals("if")) {
+            String identifier = sb.toString();
+
+            if (identifier.equals("if")) {
                 return new Token(Token.Category.IF, line, column);
             }
-            if (sb.toString().equals("else")) {
+            if (identifier.equals("else")) {
                 return new Token(Token.Category.ELSE, line, column);
             }
-            if (sb.toString().equals("while")) {
+            if (identifier.equals("while")) {
                 return new Token(Token.Category.WHILE, line, column);
             }
-            if (sb.toString().equals("return")) {
+            if (identifier.equals("return")) {
                 return new Token(Token.Category.RETURN, line, column);
             }
-            if (sb.toString().equals("struct")) {
+            if (identifier.equals("struct")) {
                 return new Token(Token.Category.STRUCT, line, column);
             }
-            if (sb.toString().equals("sizeof")) {
+            if (identifier.equals("sizeof")) {
                 return new Token(Token.Category.SIZEOF, line, column);
             }
-            if (sb.toString().equals("continue")) {
+            if (identifier.equals("continue")) {
                 return new Token(Token.Category.CONTINUE, line, column);
             }
-            if (sb.toString().equals("break")) {
+            if (identifier.equals("break")) {
                 return new Token(Token.Category.BREAK, line, column);
             }
-            if (sb.toString().equals("int")) {
+            if (identifier.equals("int")) {
                 return new Token(Token.Category.INT, line, column);
             }
-            if (sb.toString().equals("void")) {
+            if (identifier.equals("void")) {
                 return new Token(Token.Category.VOID, line, column);
             }
-            if (sb.toString().equals("char")) {
+            if (identifier.equals("char")) {
                 return new Token(Token.Category.CHAR, line, column);
             }
+            if (identifier.equals("class")){
+                return new Token(Token.Category.CLASS, line, column);
+            }
+            if (identifier.equals("extends")){
+                return new Token(Token.Category.EXTENDS, line, column);
+            }
+            if (identifier.equals("new")){
+                return new Token(Token.Category.NEW, line, column);
+            }
 
-            return new Token(Token.Category.IDENTIFIER, sb.toString(), line, column);
+                return new Token(Token.Category.IDENTIFIER, sb.toString(), line, column);
         }
 
         // recognising int literals
