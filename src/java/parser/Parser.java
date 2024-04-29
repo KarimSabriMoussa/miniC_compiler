@@ -719,6 +719,7 @@ public class Parser extends CompilerPass {
     
     private Expr parseNewInstance() {
         expect(Category.NEW);
+        expect(Category.CLASS);
         Token id = expect(Category.IDENTIFIER);
         expect(Category.LPAR);
         expect(Category.RPAR);
